@@ -1,0 +1,25 @@
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+}
+
+.mapboxgl-popup{
+  // transform:none !important;
+  // bottom: 15%;
+  max-width: 240px;
+}
+
+
+// enlever l'anchor de la pop-up
+
+// .mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
+// .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
+// .mapboxgl-popup-anchor-center .mapboxgl-popup-tip,
+// .mapboxgl-popup-anchor-left .mapboxgl-popup-tip,
+// .mapboxgl-popup-anchor-right .mapboxgl-popup-tip,
+// .mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip,
+// .mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
+// .mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip,
+// .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip{
+//   display:none !important;
+// }
