@@ -1,1 +1,65 @@
 // Specific CSS for your home-page
+#home_title {
+  color: yellow;
+}
+
+.home_container {
+  background-image: url("https://res.cloudinary.com/df1jnnjv1/image/upload/v1669731019/Tracer/parkour_1_y0jdtd.jpg");
+  font-size: 16px;
+  background-size: cover;
+  background-position: center;
+  max-width: 100%;
+  height: calc(100vh - 66px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home_button {
+  text-decoration: none;
+  margin-top: 50px;
+  background-color: transparent;
+  border: none;
+  &:hover {
+    background-color: transparent !important;
+  }
+  &:after {
+    background-color: transparent;
+  }
+}
+
+.home_content {
+  width: 100%;
+  text-align: center;
+}
+
+#home_map {
+  border-radius: 50%;
+  background-image: url("https://res.cloudinary.com/df1jnnjv1/image/upload/v1669736195/Tracer/riviera24-francia-la-mappa-degli-autovelox-dal-confine-di-stato-a-cannes-334781.large_zidn2h.jpg");
+  height: 300px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // transition: background-position 3s;
+  -webkit-animation: 4s linear 0s infinite alternate move_eye;
+          animation: 4s linear 0s infinite alternate move_eye;
+}
+
+@-webkit-keyframes move_eye { from { background-position: left -20%; } to { background-position: left 100%; }  }
+        @keyframes move_eye { from { background-position: left -20%; } to { background-position: left 100%; }  }
+
+@media only screen and (max-width: 700px) {
+  #home_map {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #home_map {
+    height: 200px;
+    width: 200px;
+  }
+}
