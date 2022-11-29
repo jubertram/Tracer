@@ -1,2 +1,8 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class = "container home_container">
+  <div class="home_content">
+    <h1 id = "home_title">Welcome to Tracer!</h1>
+    <%= link_to spots_path, class: "btn btn-primary btn-lg home_button" do %>
+      <div id="home_map"></div>
+    <% end %>
+  </div>
+</div>
