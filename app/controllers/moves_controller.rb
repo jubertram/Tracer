@@ -1,6 +1,11 @@
 class MovesController < ApplicationController
-
   def show
-    @show = Show.find(params[:id])
+    @move = Move.find(params[:id])
+  end
+
+  private
+
+  def partner_params
+    params.require(:move).permit(:name, :level, :description, :video)
   end
 end
