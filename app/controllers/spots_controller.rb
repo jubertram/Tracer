@@ -1,7 +1,6 @@
 class SpotsController < ApplicationController
   def index
     @spots = Spot.all
-
     # The `geocoded` scope filters only spots with coordinates
     @markers = @spots.geocoded.map do |spot|
       {
