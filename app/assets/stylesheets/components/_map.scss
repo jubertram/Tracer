@@ -23,3 +23,7 @@
 // .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip{
 //   display:none !important;
 // }
+
+.mapboxgl-user-location-dot, .mapboxgl-user-location-dot:before {
+  background-color: #4f3a57;
+}

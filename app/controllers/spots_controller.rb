@@ -1,7 +1,10 @@
 class SpotsController < ApplicationController
   def index
-    @spots = Spot.all
-
+    if params[:query]
+      @spots = Spot.near(params[:query], params[:distance].to_i)
+    else
+      @spots = Spot.all
+    end
     # The `geocoded` scope filters only spots with coordinates
     @markers = @spots.geocoded.map do |spot|
       {
