@@ -1,0 +1,8 @@
+<div class="container">
+<%= simple_form_for spot do |f| %>
+  <%= f.input :spot_difficulty %>
+  <%= f.input :address %>
+  <%= f.input :photo_url, as: :file %>
+  <%= f.submit "Create a spot", class:"btn btn-primary" %>
+<% end %>
+</div>
