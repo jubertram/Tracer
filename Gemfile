@@ -79,3 +79,6 @@ end
 
 # geocoder pour la map
 gem "geocoder"
+
+#cloudinary
+gem "cloudinary"
