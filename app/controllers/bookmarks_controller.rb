@@ -1,7 +1,8 @@
 class BookmarksController < ApplicationController
 
   def destroy
-
+    spot = Spot.find(params[:spot_id])
+    @bookmarks = Bookmark.delete
   end
 
   def create
