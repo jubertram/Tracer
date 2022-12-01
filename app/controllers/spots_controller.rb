@@ -1,4 +1,6 @@
 class SpotsController < ApplicationController
+  # before_action :set_spot, only: :destroy
+  before_action :set_partner, only: [:show, :destroy]
   def index
     @spots = Spot.all
     # The `geocoded` scope filters only spots with coordinates
@@ -12,7 +14,6 @@ class SpotsController < ApplicationController
   end
 
   def show
-
   end
 
   def new
@@ -30,7 +31,19 @@ class SpotsController < ApplicationController
   end
 
   def destroy
+    @spot.destroy
+    redirect_to spot_path(@spot), status: :see_other
+  end
 
+  private
+
+
+  def set_spot
+    @spot = Spot.find(params[:id])
+  end
+
+  def spot_params
+    params.require(:spot).permit(:spot_difficulty, :address, :photo_url)
   end
 
 private
