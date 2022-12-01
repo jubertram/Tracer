@@ -51,7 +51,7 @@ export default class extends Controller {
       // Create a HTML element for your custom marker
       const customMarker = document.createElement("div")
       customMarker.className = "marker"
-      customMarker.style.backgroundImage = `url('${marker.image_url}')`
+      customMarker.style.backgroundImage = `url('https://res.cloudinary.com/dxx5x9kzp/image/upload/v1669905490/Groupmarker_eai2sh.png')`
       customMarker.style.backgroundSize = "contain"
       customMarker.style.width = "34px"
       customMarker.style.height = "45px"
