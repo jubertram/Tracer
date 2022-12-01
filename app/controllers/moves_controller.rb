@@ -5,7 +5,7 @@ class MovesController < ApplicationController
 
   private
 
-  def partner_params
+  def move_params
     params.require(:move).permit(:name, :level, :description, :video)
   end
 end
