@@ -30,6 +30,10 @@
   <% end %>
 </ul>
 
+<%= simple_form_for [@spot,@spot_moves] do |f| %>
+  <%= f.association :move, label: "Nom du mouvement", label_html: { class: 'form-inputs'} %>
+  <%= f.submit "Moves ajoutés", class: "btn btn-primary" %>
+  <% end %>
 
 
 Quand on clic sur le btn Bookmark

@@ -15,6 +15,7 @@ class SpotsController < ApplicationController
   end
 
   def show
+    @spot_moves = SpotMove.new
     @bookmark = Bookmark.where(user_id: current_user.id, spot_id: @spot.id)
   end
 

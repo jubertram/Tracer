@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :spots, only: %i[index show new create destroy] do
     resources :reviews, only: :create
     resources :bookmarks, only: %i[destroy create]
+    resources :spot_moves, only: %i[create]
   end
 
   resources :moves, only: :show
