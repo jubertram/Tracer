@@ -1,1 +1,34 @@
- <%= render 'shared/form', spot: @spot %>
+
+<h1>Add a location</h1>
+
+<%= form_for(@spot) do |f| %>
+
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :longitude %><br>
+    <%= f.text_area :longitude %>
+  </div>
+
+  <div class="field">
+    <%= f.label :latitude %><br>
+    <%= f.text_area :latitude %>
+  </div>
+
+  <div class="field">
+    <%= f.label :spot_difficulty %><br>
+    <%= f.text_area :spot_difficulty %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Upload a photo" %><br>
+    <%= f.file_field :photo_url %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
