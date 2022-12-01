@@ -1,0 +1,8 @@
+<ul>
+<li><%= @spot.address %></li>
+<li><%= @spot.spot_difficulty %></li>
+<li> Il y a la photo ici <%= @spot.photo_url%></li>
+<% @spot.reviews.each do |review| %>
+  <li><%= review.rating %></li>
+<% end %>
+</ul>

@@ -1,6 +1,6 @@
 class SpotsController < ApplicationController
   # before_action :set_spot, only: :destroy
-  before_action :set_partner, only: [:show, :destroy]
+  before_action :set_spot, only: [:show, :destroy]
   def index
     @spots = Spot.all
     # The `geocoded` scope filters only spots with coordinates
