@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :spots, only: %i[index show new create destroy] do
     resources :reviews, only: :create
+    resources :bookmarks, only: %i[destroy create]
   end
 
   resources :moves, only: :show
-  resources :bookmarks, only: %i[destroy create]
 end
