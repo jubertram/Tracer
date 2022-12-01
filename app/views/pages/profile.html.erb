@@ -1,4 +1,21 @@
+<% if @user.photo.attached? %>
+  <%= cl_image_tag @user.photo.key, height: 150, width: 150, crop: :fill %>
+<% end %>
 <h1><%= @user.username %></h1>
-<%= link_to 'Add a Spot', spots_new_path %>
+<%= button_to 'Add a Spot', new_spot_path, method: 'get' %>
+<% user = current_user %>
+<% if user %>
+  <%= button_to "Edit My Profile", edit_page_path(user), method: 'get' %>
+<% end %>
+<%= button_to 'github', "https://github.com/", method: 'get' %>
 
-<p>my dashboard</p>
+<p><%= @user.bio %></p>
+
+<h2>Favoris</h2>
+<% if !Bookmark.exists?(user_id: current_user.id, spot_id: @spot.id) %>
+  <%= link_to spot_bookmark_path(@spot.id), method: :spot, remote: true %>
+  <%= spot.bookmark.count %>
+<% else %>
+  <%= link_to spot_bookmark_path(spot_id: @spot.id, id: spot.bookmarks[0].id), method: :delete, remote: true  %>
+  <%= spot.bookmark.count %>
+<% end %>

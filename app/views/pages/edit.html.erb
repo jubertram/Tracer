@@ -1,0 +1,8 @@
+<div class="container">
+<%= simple_form_for @user do |f| %>
+  <%= f.input :username %>
+  <%= f.input :bio %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit "Edit" %>
+<% end %>
+</div>

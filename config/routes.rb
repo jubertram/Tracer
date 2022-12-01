@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :reviews, only: :create
   end
 
+  resources :pages, only: %i[ edit update ]
   resources :moves, only: :show
   resources :bookmarks, only: %i[destroy create]
 end
