@@ -2,7 +2,9 @@ class BookmarksController < ApplicationController
 
   def destroy
     spot = Spot.find(params[:spot_id])
-    @bookmarks = Bookmark.delete
+    @bookmark = Bookmark.where(user_id: current_user.id, spot_id: spot.id)
+    @bookmark.destroy_all
+    redirect_to spot_path(spot), status: :see_other
   end
 
   def create
