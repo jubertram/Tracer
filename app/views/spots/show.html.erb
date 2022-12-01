@@ -13,7 +13,14 @@
 </ul>
 
 
-<%= link_to 'bookmark (ya que create qui fonctionne)', spot_bookmarks_path(@spot.id), data: {turbo_method: :post} %>
+
+<% if @bookmark.first %>
+  <%= link_to 'bookmark d', spot_bookmark_path(@spot.id), data: {turbo_method: :delete} %>
+<% else @bookmark == nil %>
+  <%= link_to 'bookmark c', spot_bookmarks_path(@spot.id), data: {turbo_method: :post} %>
+<% end %>
+
+<br><br>
 <%= link_to 'index', spots_path %>
 <%= link_to 'itinéraire (pas fait)', spots_path %>
 
