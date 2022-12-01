@@ -18,6 +18,7 @@ class SpotsController < ApplicationController
 
   def new
     @spot = Spot.new
+    @spot_moves = SpotMove.new
   end
 
   def create
