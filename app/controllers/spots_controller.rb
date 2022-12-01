@@ -3,11 +3,13 @@ class SpotsController < ApplicationController
   before_action :set_partner, only: [:show, :destroy]
   def index
     @spots = Spot.all
+    @user = current_user
     # The `geocoded` scope filters only spots with coordinates
     @markers = @spots.geocoded.map do |spot|
       {
         lat: spot.latitude,
         lng: spot.longitude,
+        image_url: helpers.asset_url("pin"),
         info_window: render_to_string(partial: "info_window", locals: { spot: spot })
       }
     end
@@ -37,18 +39,11 @@ class SpotsController < ApplicationController
 
   private
 
-
   def set_spot
     @spot = Spot.find(params[:id])
   end
 
   def spot_params
     params.require(:spot).permit(:spot_difficulty, :address, :photo_url)
-  end
-
-private
-
-  def spot_params
-    params.require(:spot).permit(:address, :spot_difficulty, :latitude, :longitude, :user_id, :photo_url )
   end
 end

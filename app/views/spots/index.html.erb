@@ -1,13 +1,25 @@
   <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
 
-<div>
+<div style="position: relative;">
+
   <div style="width: 100vw; height: 100vh;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-  <div>
-  <%= link_to "<", root_path %>
+
+  <div style="position: absolute; top:15px;left:15px;">
+    <%= link_to "<", root_path, class:"text-decoration-none", style:"color:black;" %>
   </div>
+
+  <div style="position: absolute; top:15px;left:50px;">
+      <% if @user.photo.attached? %>
+        <%= link_to @user.photo, profile_path %>
+      <% else %>
+      <%= link_to "🙋", profile_path, class:"text-decoration-none" %>
+    <% end %>
+  </div>
+
+  <%# <%= render "spots_carousel", spots: @spots %>
 </div>
