@@ -35,12 +35,12 @@ export default class extends Controller {
       })
     );
 
-    this.map.addControl(
-      new MapboxDirections({
-          accessToken: mapboxgl.accessToken
-      }),
-      'top-left'
-  );
+    // this.map.addControl(
+    //   new MapboxDirections({
+    //       accessToken: mapboxgl.accessToken
+    //   }),
+    //   'bot-left'
+  // );
 
   }
 
