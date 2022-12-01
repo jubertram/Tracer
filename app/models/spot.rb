@@ -10,8 +10,5 @@ class Spot < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
-  # accepts_nested_attributes_for :move
-
   SPOTLEVEL = ["Facile", "Moyen", "Difficile"]
-
 end

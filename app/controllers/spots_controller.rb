@@ -14,11 +14,12 @@ class SpotsController < ApplicationController
   end
 
   def show
+    @spot = Spot.find(params[:id])
+    @spot_moves = SpotMove.new
   end
 
   def new
     @spot = Spot.new
-    @spot_moves = SpotMove.new
   end
 
   def create

@@ -23,8 +23,3 @@
   </div>
 
 <% end %>
-
-<%= simple_form_for [@spot, @spot_move] do |f| %>
-  <%= f.association :move, collection: Move.all.order(:name), label: "Nom du mouvement", label_html: { class: 'form-inputs'} %>
-  <%= f.submit "Moves ajoutés", class: "btn btn-primary" %>
-  <% end %>
