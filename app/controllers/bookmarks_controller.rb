@@ -16,3 +16,4 @@ class BookmarksController < ApplicationController
       redirect_to spot_path(spot), alert: 'Something went wrong.'
     end
   end
+end
