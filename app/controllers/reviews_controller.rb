@@ -1,17 +1,19 @@
 class ReviewsController < ApplicationController
   def create
-    @user = current_user
     @spot = Spot.find(params[:spot_id])
     @review = Review.new(review_params)
     @review.spot = @spot
-    @review.user = @user
-
-    redirect_to spot_path(@spot)
+    @review.user = current_user
+    if @review.save
+      redirect_to spot_path(@spot), notice: "La review a été ajouté"
+    else
+      redirect_to spot_path(@spot), notice: "Sélectionne une étoile!"
+    end
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:rating, :content)
+    params.require(:review).permit(:rating, :comment)
   end
 end

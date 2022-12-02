@@ -15,16 +15,9 @@
 <h1><%= @spot.address %></h1>
 <h2><%= @spot.spot_difficulty %></h2>
 
-<p>Moyenne: <%= @average_rating %></p>
-
-<div class="reviews">
-  <% @reviews.each do |review| %>
-    <p>
-      <% Review::AUTHORIZED_RATINGS.each do |number| %>
-        <i class="fa-<%= (number > review.rating) ? 'regular' : 'solid' %> fa-star"></i>
-      <% end %>
-      <%= review.content %>
-    </p>
+<div id="reviews-average" data-average-review="<%= @average_rating %>">
+  <% for num in (1..5) %>
+    <i class="fa-<%= (num > @average_rating) ? 'regular' : 'solid' %> fa-star"></i>
   <% end %>
 </div>
 
@@ -55,11 +48,74 @@ Quand on clic sur le btn Bookmark
   <h2>laisse une évalutation</h2>
   <%= simple_form_for [@spot, @review] do |f| %>
     <%= f.input :rating, as: :hidden %>
-    <div class="my-3">
+    <div class="my-3" id="review-star-ratings">
       <% Review::AUTHORIZED_RATINGS.each do |index| %>
         <i id="<%= index %>" class="review-rating fa-regular fa-star"></i>
       <% end %>
     </div>
-    <%= f.submit class: "btn btn-primary", value: "Valider" %>
+    <%= f.submit class: "btn btn-primary", value: "Valider", id:"submit-star" %>
   <% end %>
 </div>
+
+
+
+<script>
+// je créé une fonction qui va changer la classe appliquée aux étoiles
+var toggleColorStars = (stars, rating) => {
+  stars.forEach((star) => {
+    if (star.id <= rating) {
+      star.className = "review-rating fa-solid fa-star"
+    } else {
+      star.className = "review-rating fa-regular fa-star"
+    }
+  });
+};
+
+// je créé une fonction qui va récupérer la valeur du rating
+var updateRatingInputForm = (rating) => {
+  const formInput = document.getElementById('review_rating')
+  formInput.value = rating
+}
+
+// je créé une fonction qui va appeler les deux premières fonctions
+var dynamicRating = () => {
+  // je récupère toutes les étoiles
+  const stars = document.querySelectorAll('.review-rating');
+  const starsReview = document.querySelector('#review-star-ratings');
+
+
+  if ( stars.length > 0) {
+    stars.forEach((star) => {
+      // au clic je récupère la valeur du rating, j'applique le style css et j'ajoute une classe "selected" sur l'étoile
+      star.addEventListener("click", (event) => {
+        const rating = event.currentTarget.id
+        updateRatingInputForm(rating);
+        toggleColorStars(stars, rating);
+        star.classList.add("selected")
+      });
+      star.addEventListener("mouseover", (event) => {
+        // s'il n'y a pas de classe "selected" j'applique du style au passage de la souris
+        const rating = event.currentTarget.id
+        if (!(document.querySelector(".selected"))) {
+          toggleColorStars(stars, rating);
+        }
+      });
+    });
+    starsReview.addEventListener("mouseout", (event) => {
+      if (!(document.querySelector(".selected"))) {
+        stars.forEach((star) => {
+          star.className = "review-rating fa-regular fa-star"
+        });
+      }
+    });
+  };
+};
+var average = document.querySelector("#reviews-average")
+var button = document.querySelector("#submit-star")
+button.addEventListener( "click", (event) => {
+  console.log(average.dataset.averageReview);
+  average.innerHTML = `<p>Moyenne: ${average.dataset.averageReview}</p>`
+})
+// export { dynamicRating };
+dynamicRating();
+</script>
