@@ -1,16 +1,23 @@
-<% if @spot.photo.attached? %>
-  <%= cl_image_tag @user.photo.key, height: 150, width: 150, crop: :fill %>
-<% end %>
+<% if @spot.photo_url.attached? %>
+    <%= cl_image_tag @spot.photo_url.key, class: "show-spot-background" %>
+  <% end %>
 
-<%= link_to spots_path do %>
-  <div class="round-button">
-    <div class="circle-back">
+  <%= link_to spots_path do %>
+    <div class="round-button">
+      <div class="circle-back">
+      </div>
+      <svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 16L1 8.5L9 1" stroke="#4F3A57" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </div>
-    <svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M9 16L1 8.5L9 1" stroke="#4F3A57" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </div>
-<% end %>
+  <% end %>
+
+  <ul>
+    <% @spot.reviews.each do |review| %>
+      <li><%= review.rating %></li>
+      <li><%= review.comment %></li>
+    <% end %>
+  </ul>
 
 <h1><%= @spot.address %></h1>
 <h2><%= @spot.spot_difficulty %></h2>
@@ -21,23 +28,41 @@
   <% end %>
 </div>
 
-
-
-<% if @bookmark.first %>
-  <%= link_to 'bookmark d', spot_bookmark_path(@spot.id), data: {turbo_method: :delete} %>
-<% else @bookmark == nil %>
-  <%= link_to 'bookmark c', spot_bookmarks_path(@spot.id), data: {turbo_method: :post} %>
-<% end %>
-
-<br><br>
-<%= link_to 'index', spots_path %>
-<%= link_to 'itinéraire (pas fait)', spots_path %>
-
-<ul>
-  <% @spot.moves.each do |move| %>
-    <li><%= move.name %></li>
+  <% if @bookmark.first %>
+    <%= link_to 'bookmark d', spot_bookmark_path(@spot.id), data: {turbo_method: :delete} %>
+  <% else @bookmark == nil %>
+    <%= link_to 'bookmark c', spot_bookmarks_path(@spot.id), data: {turbo_method: :post} %>
   <% end %>
-</ul>
+
+
+  <br><br>
+  <%= link_to 'index', spots_path %>
+  <%= link_to 'itinéraire (pas fait)', spots_path %>
+
+  <ul>
+    <% @spot.moves.each do |move| %>
+      <li><%= move.name %></li>
+    <% end %>
+  </ul>
+
+  <%= simple_form_for [@spot,@spot_moves] do |f| %>
+    <%= f.association :move, label: "Nom du mouvement", label_html: { class: 'form-inputs'} %>
+    <%= f.submit "Moves ajoutés", class: "btn btn-primary" %>
+    <% end %>
+
+
+  <div id="habillage1">
+  <h1 style="margin: 1.5rem auto;"><%= @spot.address %></h1>
+  
+    <div class="choices">
+    <div class="square-button"></div>
+    <div class="square-button"></div>
+    <div class="square-button"></div>
+  </div>
+
+
+  <h2><%= @spot.spot_difficulty %></h2>
+  </div>
 
 Quand on clic sur le btn Bookmark
 -> Cela crée une instance de Bookmark

@@ -14,3 +14,26 @@ $headers-font: "Helvetica Neue", "Helvetica Neue", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+  margin: auto;
+  font-family: "Helvetica Neue", "Helvetica Neue", "sans-serif";
+  font-weight: 500;
+  /* line-height: 1.2; */
+}
+
+/* H1 */
+h1 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 125%;
+  /* identical to box height, or 45px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 1.11101px;
+  color: #452E4F;
+}
