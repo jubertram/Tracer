@@ -1,5 +1,6 @@
 class Review < ApplicationRecord
+  AUTHORIZED_RATINGS = (1..5)
   belongs_to :spot
   belongs_to :user
-  validates :rating, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 5 }
+  validates :rating, inclusion: { in: AUTHORIZED_RATINGS }
 end

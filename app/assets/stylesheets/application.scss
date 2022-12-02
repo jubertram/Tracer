@@ -5,9 +5,19 @@
 
 // External libraries
 @import "bootstrap/scss/bootstrap";
+// @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.fa-star {
+  color:  #FFD700;
+}
+
+.review-rating {
+  cursor:    pointer;
+  font-size: 2rem;
+}

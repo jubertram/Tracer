@@ -15,8 +15,10 @@ class SpotsController < ApplicationController
   end
 
   def show
-    @spot_moves = SpotMove.new
+    @review = Review.new
     @bookmark = Bookmark.where(user_id: current_user.id, spot_id: @spot.id)
+    @reviews = @spot.reviews
+    @average_rating = @reviews.average(:rating).to_i
   end
 
   def new
@@ -27,7 +29,7 @@ class SpotsController < ApplicationController
     @spot = Spot.new(spot_params)
     @spot.user = current_user
     if @spot.save
-      redirect_to @spot, notice: "Le spot a été créé avec succès!"
+      redirect_to new_spot_spot_move_path(@spot), notice: "Le spot a été créé avec succès!"
     else
       render :new, status: :unprocessable_entity
     end
