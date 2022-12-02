@@ -5,12 +5,19 @@
   <%= link_to 'back', spots_path %>
 <h1><%= @spot.address %></h1>
 <h2><%= @spot.spot_difficulty %></h2>
-<ul>
-  <% @spot.reviews.each do |review| %>
-    <li><%= review.rating %></li>
-    <li><%= review.comment %></li>
+
+<p>Moyenne: <%= @average_rating %></p>
+
+<div class="reviews">
+  <% @reviews.each do |review| %>
+    <p>
+      <% Review::AUTHORIZED_RATINGS.each do |number| %>
+        <i class="fa-<%= (number > review.rating) ? 'regular' : 'solid' %> fa-star"></i>
+      <% end %>
+      <%= review.content %>
+    </p>
   <% end %>
-</ul>
+</div>
 
 
 
@@ -30,13 +37,20 @@
   <% end %>
 </ul>
 
-<%= simple_form_for [@spot,@spot_moves] do |f| %>
-  <%= f.association :move, label: "Nom du mouvement", label_html: { class: 'form-inputs'} %>
-  <%= f.submit "Moves ajoutés", class: "btn btn-primary" %>
-  <% end %>
-
-
 Quand on clic sur le btn Bookmark
 -> Cela crée une instance de Bookmark
 --> Mon spot_id doit etre relié au user_id qui LUI est associé au current_user
 ---> Mon spot_id de bookmark doit être relié au spot_it de la show du spot dans lequel je suis
+
+<div class="review">
+  <h2>laisse une évalutation</h2>
+  <%= simple_form_for [@spot, @review] do |f| %>
+    <%= f.input :rating, as: :hidden %>
+    <div class="my-3">
+      <% Review::AUTHORIZED_RATINGS.each do |index| %>
+        <i id="<%= index %>" class="review-rating fa-regular fa-star"></i>
+      <% end %>
+    </div>
+    <%= f.submit class: "btn btn-primary", value: "Valider" %>
+  <% end %>
+</div>

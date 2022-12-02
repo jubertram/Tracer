@@ -1,0 +1,7 @@
+<h2>Ajoute les moves à ton spot!</h2>
+
+
+<%= simple_form_for [@spot, @spot_move] do |f| %>
+  <%= f.association :move, as: :check_boxes, label: "Nom du mouvement", label_html: { class: 'form-inputs'} %>
+  <%= f.submit "Fini!", class: "btn btn-primary" %>
+  <% end %>
