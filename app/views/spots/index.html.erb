@@ -9,9 +9,15 @@
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 
-  <div style="position: absolute; top:15px;left:15px;">
-    <%= link_to "<", root_path, class:"text-decoration-none", style:"color:black;" %>
-  </div>
+  <%= link_to root_path do %>
+    <div class="round-button">
+      <div class="circle-back">
+      </div>
+      <svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 16L1 8.5L9 1" stroke="#4F3A57" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  <% end %>
 
   <div style="position: absolute; top:15px;left:50px;">
       <% if @user.photo.attached? %>
