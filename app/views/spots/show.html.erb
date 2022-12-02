@@ -1,9 +1,6 @@
-<% if @spot.photo.attached? %>
-  <%= cl_image_tag @user.photo.key, height: 150, width: 150, crop: :fill %>
-<% end %>
-
-  <%= link_to 'back', spots_path %>
+ <%= link_to 'back', spots_path %>
 <h1><%= @spot.address %></h1>
+<img src= <%= @spot.photo_url %> alt="Pas encore de photo">
 <h2><%= @spot.spot_difficulty %></h2>
 <ul>
   <% @spot.reviews.each do |review| %>
