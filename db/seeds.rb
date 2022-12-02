@@ -10,7 +10,7 @@ Spot.destroy_all
 User.destroy_all
 Move.destroy_all
 
-# require "open-uri"
+require "open-uri"
 
 user_1 = User.create(username: "Julien", email: "lewagon@test.com", password: "password")
 user_2 = User.create(username: "Axel", email: "axel@logan.com", password: "coucou")
@@ -33,21 +33,59 @@ move_13 = Move.create(name: "Dash", level: "Avancé", description: "Franchisseme
 move_14 = Move.create(name: "Tic-tac", level: "Intermédiaire", description: "Tout mouvement dont au moins un appui des jambes ne se fait pas dans l'axe de la course d'élan, peut être qualifié de tic-tac. Souvent cela consiste à prendre appui sur un mur latéral.", video: "https://res.cloudinary.com/ddz8gswxn/video/upload/v1669818997/Tracer/tic_tac_xbo50u.mp4s")
 move15 = Move.create(name: "Roulade", level: "Intermédiaire", description: "Lorsque la hauteur de chute est trop importante pour une réception simple, cette technique consiste à rouler sur la ligne diagonale du dos, dissipant ainsi l'énergie de la chute (à ne surtout pas confondre avec la roulade droite de gymnastique, dangereuse quand on fait du parkour ; par exemple la tête risquerait de cogner contre le sol). La roulade est aussi utilisée en tant que technique de « réchappe » après un faux mouvement.", video: "https://res.cloudinary.com/ddz8gswxn/video/upload/v1669815098/Tracer/video_roulade_qldgwh.mp4")
 
+file1 = URI.open("https://res.cloudinary.com/dxx5x9kzp/image/upload/v1669985246/Porte_Auguste_f3rp26.jpg")
+spot = Spot.new(address: "Porte d'Auguste, Nîmes", spot_difficulty: "Facile", user_id: user_1.id)
+spot.photo_url.attach(io: file1, filename: "photo1.jph", content_type: "image/jpg")
+spot.save
+
+file2 = URI.open("https://res.cloudinary.com/dxx5x9kzp/image/upload/v1669985246/Place_saint_charles_h6yhjo.png")
+spot1 = Spot.new(address: "Place saint charles, Nîmes", spot_difficulty: "Intermédiaire", user_id: user_2.id)
+spot1.photo_url.attach(io: file2, filename: "photo1.png", content_type: "image/png")
+spot1.save
+
+file3 = URI.open("https://res.cloudinary.com/dxx5x9kzp/image/upload/v1669985245/Jardin_de_la_fontaine_smdobe.jpg")
+spot2 = Spot.new(address: "26 Quai de la Fontaine, Nîmes", spot_difficulty: "Intermédiaire", user_id: user_3.id)
+spot2.photo_url.attach(io: file3, filename: "photo1.jpg", content_type: "image/jpg")
+spot2.save
+
+file4 = URI.open("https://res.cloudinary.com/dxx5x9kzp/image/upload/v1669985246/Temple_de_diana_zgxnyg.jpg")
+spot3 = Spot.new(address: "Quai Georges Clemenceau, Nîmes", spot_difficulty: "Intermédiaire", user_id: user_4.id)
+spot3.photo_url.attach(io: file4, filename: "photo1.jpg", content_type: "image/jpg")
+spot3.save
+
+file5 = URI.open("https://res.cloudinary.com/dxx5x9kzp/image/upload/v1669985246/Maison_carr%C3%A9_vole6j.png")
+spot4 = Spot.new(address: "Place de la Maison Carrée, Nîmes", spot_difficulty: "Avancé", user_id: user_4.id)
+spot4.photo_url.attach(io: file5, filename: "photo1.png", content_type: "image/png")
+spot4.save
+
+file6 = URI.open("https://res.cloudinary.com/dxx5x9kzp/image/upload/v1669985246/Place_d_assas_fglh3e.png")
+spot5 = Spot.new(address: "Place d'Assas, Nîmes", spot_difficulty: "Intermédiaire", user_id: user_4.id)
+spot5.photo_url.attach(io: file6, filename: "photo1.png", content_type: "image/png")
+spot5.save
+
+file7 = URI.open("https://res.cloudinary.com/dxx5x9kzp/image/upload/v1669985247/Place_du_chapitre_b9nj5x.png")
+spot6 = Spot.new(address: "Place du Chapitre, Nîmes", spot_difficulty: "Avancé", user_id: user_4.id)
+spot6.photo_url.attach(io: file7, filename: "photo1.png", content_type: "image/png")
+spot6.save
+
+file8 = URI.open("https://res.cloudinary.com/dxx5x9kzp/image/upload/v1669985246/Gare_routiere_qom8lm.png")
+spot7 = Spot.new(address: "163 All. Frédéric Desmons, Nîmes", spot_difficulty: "Facile", user_id: user_4.id)
+spot7.photo_url.attach(io: file8, filename: "photo1.png", content_type: "image/png")
+spot7.save
+
+file9 = URI.open("https://res.cloudinary.com/dxx5x9kzp/image/upload/v1669985246/Carr%C3%A9_d_art_u51zgp.png")
+spot8 = Spot.new(address: "Carré d'Art-Musée d'art contemporain, Nîmes", spot_difficulty: "Intermédiaire", user_id: user_4.id)
+spot8.photo_url.attach(io: file9, filename: "photo1.png", content_type: "image/png")
+spot8.save
+
+file10 = URI.open("https://res.cloudinary.com/dxx5x9kzp/image/upload/v1669985247/Mont_duplan_snc3fi.png")
+spot9 = Spot.new(address: "Mont Duplan, Nîmes", spot_difficulty: "Facile", user_id: user_4.id)
+spot9.photo_url.attach(io: file10, filename: "photo1.png", content_type: "image/png")
+spot9.save
 
 
-spot_1 = Spot.create(address: "Porte d'Auguste, Nîmes", spot_difficulty: "Facile", user_id: user_1.id, photo_url: "https://res.cloudinary.com/ddz8gswxn/image/upload/v1669982294/Tracer/Porte_Auguste_tkbqpp.jpg")
-spot_2 = Spot.create(address: "Place saint charles, Nîmes", spot_difficulty: "Intermédiaire", user_id: user_2.id, photo_url: "https://res.cloudinary.com/ddz8gswxn/image/upload/v1669982295/Tracer/Place_saint_charles_krxqrh.png")
-spot_3 = Spot.create(address: "26 Quai de la Fontaine, Nîmes", spot_difficulty: "Intermédiaire", user_id: user_4.id, photo_url: "https://res.cloudinary.com/ddz8gswxn/image/upload/v1669982294/Tracer/Jardin_de_la_fontaine_uw6rql.jpg")
-spot_4 = Spot.create(address: "Quai Georges Clemenceau, Nîmes", spot_difficulty: "Intermédiaire", user_id: user_4.id, photo_url: "https://res.cloudinary.com/ddz8gswxn/image/upload/v1669982294/Tracer/Temple_de_diana_knw3tz.jpg")
-spot_5 = Spot.create(address: "Place de la Maison Carrée, Nîmes", spot_difficulty: "Avancé", user_id: user_4.id, photo_url: "https://res.cloudinary.com/ddz8gswxn/image/upload/v1669982295/Tracer/Maison_carr%C3%A9_ceuxxs.png")
-spot_6 = Spot.create(address: "Place d'Assas, Nîmes", spot_difficulty: "Intermédiaire", user_id: user_4.id, photo_url: "https://res.cloudinary.com/ddz8gswxn/image/upload/v1669982295/Tracer/Place_d_assas_kl2mrs.png")
-spot_7 = Spot.create(address: "Place du Chapitre, Nîmes", spot_difficulty: "Avancé", user_id: user_4.id, photo_url: "https://res.cloudinary.com/ddz8gswxn/image/upload/v1669982295/Tracer/Place_du_chapitre_xca8be.png")
-spot_8 = Spot.create(address: "163 All. Frédéric Desmons, Nîmes", spot_difficulty: "Facile", user_id: user_4.id, photo_url: "https://res.cloudinary.com/ddz8gswxn/image/upload/v1669982295/Tracer/Gare_routiere_kiwdqf.png")
-spot_9 = Spot.create(address: "Carré d'Art-Musée d'art contemporain, Nîmes", spot_difficulty: "Intermédiaire", user_id: user_4.id)
-spot_10 = Spot.create(address: "Mont Duplan, Nîmes", spot_difficulty: "Facile", user_id: user_4.id, photo_url: "https://res.cloudinary.com/ddz8gswxn/image/upload/v1669982295/Tracer/Mont_duplan_rpfqa9.png")
+spot_move1 = SpotMove.create(move_id: move_1.id, spot_id: spot1.id)
 
-spot_move1 = SpotMove.create(move_id: move_1.id, spot_id: spot_1.id)
+review_1 = Review.create(spot_id: spot1.id, user_id: user_1.id, rating: 4.5, comment: "Not bad")
 
-review_1 = Review.create(spot_id: spot_1.id, user_id: user_1.id, rating: 4.5, comment: "Not bad")
-
-bookmark_1 = Bookmark.create(spot_id: spot_1.id, user_id: user_1.id)
+bookmark_1 = Bookmark.create(spot_id: spot1.id, user_id: user_1.id)

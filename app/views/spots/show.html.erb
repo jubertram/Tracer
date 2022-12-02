@@ -1,6 +1,7 @@
- <%= link_to 'back', spots_path %>
 <h1><%= @spot.address %></h1>
-<img src= <%= @spot.photo_url %> alt="Pas encore de photo">
+<% if @spot.photo_url.attached? %>
+  <%= cl_image_tag @spot.photo_url.key %>
+<% end %>
 <h2><%= @spot.spot_difficulty %></h2>
 <ul>
   <% @spot.reviews.each do |review| %>
