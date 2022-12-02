@@ -1,7 +1,3 @@
-<% if @spot.photo.attached? %>
-  <%= cl_image_tag @user.photo.key, height: 150, width: 150, crop: :fill %>
-<% end %>
-
 <%= link_to spots_path do %>
   <div class="round-button">
     <div class="circle-back">
@@ -13,6 +9,9 @@
 <% end %>
 
 <h1><%= @spot.address %></h1>
+<% if @spot.photo_url.attached? %>
+  <%= cl_image_tag @spot.photo_url.key %>
+<% end %>
 <h2><%= @spot.spot_difficulty %></h2>
 
 <ul>

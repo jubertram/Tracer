@@ -5,7 +5,7 @@ class Spot < ApplicationRecord
   has_many :spot_moves, dependent: :destroy
   has_many :moves, through: :spot_moves
 
-  has_one_attached :photo
+  has_one_attached :photo_url
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
