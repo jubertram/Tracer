@@ -84,7 +84,9 @@ spot9.photo_url.attach(io: file10, filename: "photo1.png", content_type: "image/
 spot9.save
 
 
-spot_move1 = SpotMove.create(move_id: move_1.id, spot_id: spot1.id)
+spot_move1 = SpotMove.create(move_id: move_1.id, spot_id: spot6.id)
+spot_move1 = SpotMove.create(move_id: move_6.id, spot_id: spot6.id)
+spot_move1 = SpotMove.create(move_id: move_10.id, spot_id: spot6.id)
 
 review_1 = Review.create(spot_id: spot1.id, user_id: user_1.id, rating: 4.5, comment: "Not bad")
 
