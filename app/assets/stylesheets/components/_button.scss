@@ -1,0 +1,15 @@
+/* Retour arrière */
+.round-button {
+display: grid;
+justify-content: center;
+position: absolute;
+width: 40px;
+height: 40px;
+left: 24px;
+top: 48px;
+backdrop-filter: blur(5px);
+/* Note: backdrop-filter has minimal browser support */
+background: rgba(255, 255, 255, 0.53);
+border: 1px solid #FFFFFF;
+border-radius: 35px;
+}
