@@ -1,7 +1,5 @@
-<div id="parking-background">
-
-  <% if @spot.photo.attached? %>
-    <%= cl_image_tag @user.photo.key, height: 150, width: 150, crop: :fill %>
+<% if @spot.photo_url.attached? %>
+    <%= cl_image_tag @spot.photo_url.key, class: "show-spot-background" %>
   <% end %>
 
   <%= link_to spots_path do %>
@@ -24,9 +22,6 @@
 
 
 <h1><%= @spot.address %></h1>
-<% if @spot.photo_url.attached? %>
-  <%= cl_image_tag @spot.photo_url.key %>
-<% end %>
 <h2><%= @spot.spot_difficulty %></h2>
 
 
@@ -64,4 +59,3 @@
 
   <h2><%= @spot.spot_difficulty %></h2>
   </div>
-</div>
