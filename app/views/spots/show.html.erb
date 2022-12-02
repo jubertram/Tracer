@@ -1,0 +1,38 @@
+<% if @spot.photo.attached? %>
+  <%= cl_image_tag @user.photo.key, height: 150, width: 150, crop: :fill %>
+<% end %>
+
+  <%= link_to 'back', spots_path %>
+<h1><%= @spot.address %></h1>
+<h2><%= @spot.spot_difficulty %></h2>
+<ul>
+  <% @spot.reviews.each do |review| %>
+    <li><%= review.rating %></li>
+    <li><%= review.comment %></li>
+  <% end %>
+</ul>
+
+
+
+<% if @bookmark.first %>
+  <%= link_to 'bookmark d', spot_bookmark_path(@spot.id), data: {turbo_method: :delete} %>
+<% else @bookmark == nil %>
+  <%= link_to 'bookmark c', spot_bookmarks_path(@spot.id), data: {turbo_method: :post} %>
+<% end %>
+
+<br><br>
+<%= link_to 'index', spots_path %>
+<%= link_to 'itinéraire (pas fait)', spots_path %>
+
+<ul>
+  <% @spot.moves.each do |move| %>
+    <li><%= move.name %></li>
+  <% end %>
+</ul>
+
+
+
+Quand on clic sur le btn Bookmark
+-> Cela crée une instance de Bookmark
+--> Mon spot_id doit etre relié au user_id qui LUI est associé au current_user
+---> Mon spot_id de bookmark doit être relié au spot_it de la show du spot dans lequel je suis

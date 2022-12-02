@@ -3,19 +3,14 @@
 <% end %>
 <h1><%= @user.username %></h1>
 <%= button_to 'Add a Spot', new_spot_path, method: 'get' %>
-<% user = current_user %>
-<% if user %>
-  <%= button_to "Edit My Profile", edit_page_path(user), method: 'get' %>
+<% if @user %>
+  <%= button_to "Edit My Profile", edit_user_registration_path(@user), method: 'get' %>
 <% end %>
 <%= button_to 'github', "https://github.com/", method: 'get' %>
 
 <p><%= @user.bio %></p>
 
 <h2>Favoris</h2>
-<% if !Bookmark.exists?(user_id: current_user.id, spot_id: @spot.id) %>
-  <%= link_to spot_bookmark_path(@spot.id), method: :spot, remote: true %>
-  <%= spot.bookmark.count %>
-<% else %>
-  <%= link_to spot_bookmark_path(spot_id: @spot.id, id: spot.bookmarks[0].id), method: :delete, remote: true  %>
-  <%= spot.bookmark.count %>
+<% @bookmarks.each do |bookmark| %>
+  <%= bookmark.spot.address %>
 <% end %>
