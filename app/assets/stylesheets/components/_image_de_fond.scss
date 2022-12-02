@@ -1,7 +1,13 @@
-
-/* parking */
-
 .show-spot-background {
   height: 100vh;
-  background-position: center;
+  width: 100vh;
+  background-color: red;
+  // overflow: hidden;
+  // background-position: center;
+  // background-size: cover;
 }
+
+
+// <% if @spot.photo_url.attached? %>
+// <%= cl_image_tag @spot.photo_url.key %>
+// <% end %>
