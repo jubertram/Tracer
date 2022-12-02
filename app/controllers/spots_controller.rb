@@ -29,7 +29,7 @@ class SpotsController < ApplicationController
     @spot = Spot.new(spot_params)
     @spot.user = current_user
     if @spot.save
-      redirect_to new_spot_spot_move_path(@spot), notice: "The spot was successfully created."
+      redirect_to new_spot_spot_move_path(@spot), notice: "Le spot a été créé avec succès!"
     else
       render :new, status: :unprocessable_entity
     end

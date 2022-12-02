@@ -5,7 +5,7 @@
 <%= simple_form_for (@spot) do |f| %>
 
   <div class="form-inputs">
-    <%= f.label :address %><br>
+    <%= f.label :address, "Adresse" %><br>
     <%= f.text_field :address %>
   </div>
 
@@ -14,7 +14,7 @@
     </div>
 
   <div class="field">
-    <%= f.label "Upload a photo" %><br>
+    <%= f.label "Télécharger une photo" %><br>
     <%= f.file_field :photo_url %>
   </div>
 

@@ -2,7 +2,16 @@
   <%= cl_image_tag @user.photo.key, height: 150, width: 150, crop: :fill %>
 <% end %>
 
-  <%= link_to 'back', spots_path %>
+<%= link_to spots_path do %>
+  <div class="round-button">
+    <div class="circle-back">
+    </div>
+    <svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 16L1 8.5L9 1" stroke="#4F3A57" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+<% end %>
+
 <h1><%= @spot.address %></h1>
 <h2><%= @spot.spot_difficulty %></h2>
 
