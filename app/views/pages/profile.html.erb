@@ -1,4 +1,16 @@
+<% if @user.photo.attached? %>
+  <%= cl_image_tag @user.photo.key, height: 150, width: 150, crop: :fill %>
+<% end %>
 <h1><%= @user.username %></h1>
-<%= link_to 'Add a Spot', new_spot_path %>
+<%= button_to 'Add a Spot', new_spot_path, method: 'get' %>
+<% if @user %>
+  <%= button_to "Edit My Profile", edit_user_registration_path(@user), method: 'get' %>
+<% end %>
+<%= button_to 'github', "https://github.com/", method: 'get' %>
 
-<p>my dashboard</p>
+<p><%= @user.bio %></p>
+
+<h2>Favoris</h2>
+<% @bookmarks.each do |bookmark| %>
+  <%= bookmark.spot.address %>
+<% end %>

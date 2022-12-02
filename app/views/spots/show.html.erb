@@ -23,6 +23,12 @@
 
 
 
+<h1><%= @spot.address %></h1>
+<% if @spot.photo_url.attached? %>
+  <%= cl_image_tag @spot.photo_url.key %>
+<% end %>
+<h2><%= @spot.spot_difficulty %></h2>
+
 
   <% if @bookmark.first %>
     <%= link_to 'bookmark d', spot_bookmark_path(@spot.id), data: {turbo_method: :delete} %>
