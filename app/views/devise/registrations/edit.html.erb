@@ -38,4 +38,12 @@
   <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-link" %>
 </div>
 
-<%= link_to "Back", :back %>
+<%= link_to :back do %>
+  <div class="round-button">
+    <div class="circle-back">
+    </div>
+    <svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 16L1 8.5L9 1" stroke="#4F3A57" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+<% end %>

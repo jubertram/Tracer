@@ -2,7 +2,7 @@
 #habillage1 {
   display: grid;
   align-content: space-around;
-  justify-content: space-around;
+  // justify-content: space-around;
   justify-items: center;
   box-sizing: border-box;
   position: absolute;
@@ -46,10 +46,31 @@
   left: 0%;
   right: 0%;
   top: 22.04%;
-  bottom: 0%;
+  // bottom: 0%;
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.52);
   backdrop-filter: blur(5px);
   /* Note: backdrop-filter has minimal browser support */
   border-radius: 30px 30px 0px 0px;
+}
+
+/* avatar */
+
+.avatar-profile {
+margin-top: -3vh;
+left: 129px;
+top: 153px;
+border: 2.925px solid #FFFFFF;
+border-radius: 111.15px;
+  img{
+    width: 111.15px;
+    height: 111.15px;
+    left: 243.07px;
+    top: 155.92px;
+    border-radius: 162.45px;
+  }
+}
+
+.flex-profile{
+  width: 80%;
 }
