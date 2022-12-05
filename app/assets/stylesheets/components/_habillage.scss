@@ -1,5 +1,9 @@
 /* Habillage */
 #habillage1 {
+  display: grid;
+  align-content: space-around;
+  justify-content: space-around;
+  justify-items: center;
   box-sizing: border-box;
   position: absolute;
   left: 0%;
@@ -15,6 +19,10 @@
 
 
 #habillage2 {
+  display: grid;
+  align-content: space-around;
+  justify-content: space-around;
+  justify-items: center;
   box-sizing: border-box;
   position: absolute;
   left: 0%;
@@ -26,4 +34,22 @@
   backdrop-filter: blur(5px);
   /* Note: backdrop-filter has minimal browser support */
   border-radius: 20px 20px 0px 0px;
+}
+
+#habillage3 {
+  display: grid;
+  align-content: space-around;
+  justify-content: space-around;
+  justify-items: center;
+  box-sizing: border-box;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 22.04%;
+  bottom: 0%;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  backdrop-filter: blur(5px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 30px 30px 0px 0px;
 }
