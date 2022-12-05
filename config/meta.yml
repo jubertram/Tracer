@@ -1,0 +1,5 @@
+meta_product_name: "Tracer"
+meta_title: "Tracer - Retrouvez les meilleurs spots de Parkour de votre ville!"
+meta_description: "Tracer est une web app qui va te permettre de connaître tous les endroits où faire du Parkour. Un outil parfait pour rencontrer de nouveaux Tracers et découvrir des spots approuvés par la communauté!"
+meta_image: "tracer.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards
