@@ -35,7 +35,7 @@ move15 = Move.create(name: "Roulade", level: "Intermédiaire", description: "Lor
 
 file1 = URI.open("https://res.cloudinary.com/dxx5x9kzp/image/upload/v1669985246/Porte_Auguste_f3rp26.jpg")
 spot = Spot.new(address: "Porte d'Auguste, Nîmes", spot_difficulty: "Facile", user_id: user_1.id)
-spot.photo_url.attach(io: file1, filename: "photo1.jph", content_type: "image/jpg")
+spot.photo_url.attach(io: file1, filename: "photo1.jpg", content_type: "image/jpg")
 spot.save
 
 file2 = URI.open("https://res.cloudinary.com/dxx5x9kzp/image/upload/v1669985246/Place_saint_charles_h6yhjo.png")
