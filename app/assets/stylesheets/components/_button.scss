@@ -39,5 +39,30 @@ border-radius: 35px;
   backdrop-filter: blur(5px);
   /* Note: backdrop-filter has minimal browser support */
   border-radius: 10px;
+}
 
+/* Rectangle 1 */
+.move-bouton {
+  width: 16vh;
+  height: 42px;
+  background: radial-gradient(276.04% 1435.42% at 82.69% 217.71%, #7077A0 0%, #4F3A57 100%);
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    left: 14.48%;
+    right: 23.45%;
+    top: 27.78%;
+    bottom: 36.51%;
+    font-family: 'Helvetica Neue';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    /* or 17px */
+    letter-spacing: 0.04em;
+    margin-bottom: 0rem;
+    color: #FFFFFF;
+  }
 }
