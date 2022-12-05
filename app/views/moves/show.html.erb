@@ -1,7 +1,28 @@
+  <%= link_to spots_path do %>
+    <div class="round-button">
+      <div class="circle-back">
+      </div style="position: absolute; top:15px;left:40px;">
+      <svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 16L1 8.5L9 1" stroke="#4F3A57" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  <% end %>
+
+  <div style="position: absolute; top:15px;left:50px;">
+      <% if @user.photo.attached? %>
+        <%= link_to @user.photo, profile_path %>
+      <% else %>
+      <%= link_to "🙋", profile_path, class:"text-decoration-none" %>
+    <% end %>
+  </div>
+
 <h1><%= @move.name %> (<%= @move.level %>) </h1>
+<h2> 📍Pré-requis: </h2>
+<%= @move.pre_requis %>
+<h2> ℹ️ Description:</h2>
 <p><%= @move.description %></p>
 <video controls>
 <source src=<%= @move.video %>></video>
 </video>
-<%= link_to 'Spots', spots_path %>
-<%= link_to 'Profil', profile_path %>
+<h2> ⚠️ Attention: </h2>
+<%= @move.attention %>
