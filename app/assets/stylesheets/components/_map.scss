@@ -28,3 +28,26 @@
 .mapboxgl-user-location-dot, .mapboxgl-user-location-dot:before {
   background-color: #4f3a57;
 }
+
+.popup-title a {
+  text-decoration: none;
+  color: $charcoal;
+  font-size: 1.2rem;
+
+}
+
+.mapboxgl-popup-content {
+  background-color: #ffffffa8 !important;
+  h2 {
+    margin-top: 1rem;
+  }
+  p {
+    font-size: 1rem;
+    color: $charcoal;
+  }
+}
+
+.mapboxgl-ctrl-geocoder--icon-search {
+  left: 115px;
+  top: 10px;
+}
