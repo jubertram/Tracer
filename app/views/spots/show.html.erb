@@ -1,3 +1,5 @@
+
+
 <% if @spot.photo_url.attached? %>
   <div class ="fond" style="background-image: url('http://res.cloudinary.com/dxx5x9kzp/image/upload/v1/development/<%= @spot.photo_url.key %>');"></div>
 <% end %>
@@ -68,11 +70,6 @@
 
       <%= link_to 'itinéraire (pas fait)', spots_path, style: "display: none;" %>
 
-    <% if @bookmark.first %>
-      <%= link_to 'bookmark d', spot_bookmark_path(@spot.id), data: {turbo_method: :delete} %>
-    <% else @bookmark == nil %>
-      <%= link_to 'bookmark c', spot_bookmarks_path(@spot.id), data: {turbo_method: :post} %>
-    <% end %>
 
     <% if @bookmark.first %>
       <%= link_to 'bookmark d', spot_bookmark_path(@spot.id), data: {turbo_method: :delete} %>
@@ -99,13 +96,24 @@
       <% end %>
     </div>
 
-    <h2><%= @spot.spot_difficulty %></h2>
+    <h2 style="margin: 2vh 0; color: #452E4F;"><%= @spot.spot_difficulty %></h2>
 
-      <ul>
+
+    <ul style="padding-left: 0; filter: drop-shadow(0px 8px 20px rgba(10, 27, 70, 0.2));">
+      <div style="gap: 36px;
+                  display: inline-flex;
+                  flex-wrap: wrap;
+                  justify-content: space-between;">
         <% @spot.moves.each do |move| %>
-          <li><%= move.name %></li>
+          <li class="move-bouton">
+            <p style="width: 12ch; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><%= move.name %></p>
+              <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 8H1M11 1L17 8L11 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+          </li>
         <% end %>
-      </ul>
+      </div>
+    </ul>
   </section>
 </div>
 
