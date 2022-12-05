@@ -2,3 +2,6 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import "bootstrap"
+import {bookmarkon} from "./components/bookmark"
+
+bookmarkon()
