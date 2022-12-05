@@ -103,7 +103,7 @@
 
       <ul>
         <% @spot.moves.each do |move| %>
-          <li><%= move.name %></li>
+          <li><%= link_to move.name, move_path(move) %></li>
         <% end %>
       </ul>
   </section>
