@@ -1,5 +1,6 @@
 class MovesController < ApplicationController
   def show
+    @user = current_user
     @move = Move.find(params[:id])
   end
 
