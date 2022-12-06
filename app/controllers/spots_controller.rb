@@ -19,6 +19,13 @@ class SpotsController < ApplicationController
     @bookmark = Bookmark.where(user_id: current_user.id, spot_id: @spot.id)
     @reviews = @spot.reviews
     @average_rating = @reviews.average(:rating).to_i
+
+    @markers = @spot.spot_moves.map do |spot_move|
+      {
+        lat: spot_move.latitude,
+        lng: spot_move.longitude
+      }
+    end
   end
 
   def new

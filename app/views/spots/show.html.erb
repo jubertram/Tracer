@@ -116,10 +116,51 @@
         <% end %>
       </div>
     </ul>
+
+  <div id="map3" data-markers=<%= @markers.to_json %> style="width:100%; height:350px"></div>
+
   </section>
 </div>
 
 <script>
+// ------------------------------------------- MAP ------------------------------------------
+
+// je créé la carte
+var map3 = document.querySelector("#map3")
+mapboxgl.accessToken = 'pk.eyJ1IjoiY2hvc3VrZSIsImEiOiJjbGFiMnhtbnowZTE3M3BsZjJjMnFsaWcxIn0.v30HKeYX-ohBi1jLJYJYew';
+var map = new mapboxgl.Map({
+  container: 'map3',
+style: 'mapbox://styles/mapbox/satellite-streets-v12',
+zoom: 18
+});
+
+// j'ajoute les markers
+
+var markers3 = JSON.parse(map3.dataset.markers)
+console.log(markers3);
+markers3.forEach(marker => {
+  const customMarker3 = document.createElement("div")
+  customMarker3.className = "marker3"
+  customMarker3.style.backgroundImage = `url('https://res.cloudinary.com/dxx5x9kzp/image/upload/v1669905490/Groupmarker_eai2sh.png')`
+  customMarker3.style.backgroundSize = "contain"
+  customMarker3.style.width = "34px"
+  customMarker3.style.height = "45px"
+
+  var addedMarker3 = new mapboxgl.Marker(customMarker3)
+    .setLngLat([marker.lng, marker.lat])
+    .addTo(map);
+
+  customMarker3.markerInstance = addedMarker3
+
+// je centre la map par rapport aux markers
+    const bounds = new mapboxgl.LngLatBounds()
+    markers3.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+    map.fitBounds(bounds, { padding: 50, maxZoom: 20, duration: 0 })
+});
+
+
+// ------------------------------ Evaluation --------------------------------------------
+
   // je créé une fonction qui va changer la classe appliquée aux étoiles
   var toggleColorStars = (stars, rating) => {
     stars.forEach((star) => {
