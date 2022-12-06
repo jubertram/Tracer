@@ -3,9 +3,10 @@
 
 <%= simple_form_for [@spot, @spot_move] do |f| %>
   <%= f.association :move, as: :select, label: "Nom du mouvement", label_html: { class: 'form-inputs'} %>
-  <%= f.input :longitude, id:"longitude2" %>
-  <%= f.input :latitude, id:"latitude2" %>
-  <%= f.submit "Fini!", class: "btn btn-primary" %>
+  <%= f.input :longitude, id:"longitude2", class:"d-none" %>
+  <%= f.input :latitude, id:"latitude2", class:"d-" %>
+  <%= f.submit "Ajoute un autre move", class: "btn btn-primary" %>
+  <%= link_to "Sauvegarde les moves!" , spot_path(@spot)%>
   <% end %>
 
 <div id="map1" data-markers=<%= @markers.to_json %> data data-longitude=<%= @spot.longitude %> data-latitude=<%= @spot.latitude %> style="width:500px; height:500px"></div>
