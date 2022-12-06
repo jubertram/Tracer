@@ -85,8 +85,9 @@
         <%= link_to spot_path(bookmark.spot) do %>
           <div class="card-bouton">
             <%= cl_image_tag bookmark.spot.photo_url.key, height: 100, width: 100, crop: :fill %>
-            <p><%= bookmark.spot.address %></p>
-
+            <div class="card-info">
+              <p class="card-address"><%= bookmark.spot.address %></p>
+            </div>
           </div>
         <% end %>
       <% end %>
