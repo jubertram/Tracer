@@ -1,8 +1,10 @@
-<div class = "container home_container">
-  <div class="home_content">
-    <h1 id = "home_title">Bienvenue dans Tracer!</h1>
-    <%= link_to spots_path, class: "btn btn-primary btn-lg home_button" do %>
-      <div id="home_map"></div>
-    <% end %>
-  </div>
+<div class = "home_container">
+  <h1 id="home-title" class="animate__animated animate__pulse">
+    Bienvenue dans Tracer !
+  </h1>
+  <%= link_to spots_path do %>
+    <section class="stage">
+      <figure class="ball"><span class="shadow"></span></figure>
+    </section>
+  <% end %>
 </div>
