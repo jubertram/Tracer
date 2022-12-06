@@ -83,18 +83,20 @@
       <% end %>
     </div>
 
-    <div class="review">
-      <h2>laisse une évalutation</h2>
-      <%= simple_form_for [@spot, @review] do |f| %>
-        <%= f.input :rating, as: :hidden %>
-        <div class="my-3" id="review-star-ratings">
-          <% Review::AUTHORIZED_RATINGS.each do |index| %>
-            <i id="<%= index %>" class="review-rating fa-regular fa-star"></i>
-          <% end %>
-        </div>
-        <%= f.submit class: "btn btn-primary", value: "Valider", id:"submit-star" %>
-      <% end %>
-    </div>
+    <% if @spot.reviews.find_by(user_id: current_user) == nil %>
+      <div class="review">
+        <h2>laisse une évalutation</h2>
+        <%= simple_form_for [@spot, @review] do |f| %>
+          <%= f.input :rating, as: :hidden %>
+          <div class="my-3" id="review-star-ratings">
+            <% Review::AUTHORIZED_RATINGS.each do |index| %>
+              <i id="<%= index %>" class="review-rating fa-regular fa-star"></i>
+            <% end %>
+          </div>
+          <%= f.submit class: "btn btn-primary", value: "Valider", id:"submit-star" %>
+        <% end %>
+      </div>
+    <% end %>
 
     <h2 style="margin: 2vh 0; color: #452E4F;"><%= @spot.spot_difficulty %></h2>
 
