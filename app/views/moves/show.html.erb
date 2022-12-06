@@ -16,13 +16,37 @@
     <% end %>
   </div>
 
-<h1><%= @move.name %> (<%= @move.level %>) </h1>
-<h2> 📍Pré-requis: </h2>
-<%= @move.pre_requis %>
-<h2> ℹ️ Description:</h2>
-<p><%= @move.description %></p>
-<video controls>
-<source src=<%= @move.video %>></video>
-</video>
-<h2> ⚠️ Attention: </h2>
-<%= @move.attention %>
+      <%= video_tag @move.video, class: "video-move" %>
+
+  <button id="play">play</button>
+  <button id="pause">pause</button>
+<div id="habillage3">
+  <section class="flex-profile">
+    <h1 style="margin: 1rem auto; font-size: calc(1.9rem + 1.5vw); font-weight: 700;"><%= @move.name %></h1>
+    <div class="choices">
+      <h2 style="margin-top: 2vh; color: #452E4F;">📍Pré-requis: </h2>
+        <p style="color: #452E4F;"><%= @move.pre_requis %></p>
+      <h2 style="margin-top: 2vh; color: #452E4F;">ℹ️ Description: </h2>
+        <p style="color: #452E4F;"><%= @move.description %></p>
+      <h2 style="margin-top: 2vh; color: #452E4F;">⚠️ Attention: </h2>
+        <p style="color: #452E4F;"><%= @move.attention %></p>
+    </div>
+  </section>
+</div>
+
+  <script>
+    var habillage = document.getElementById("habillage3");
+    var button = document.querySelector('.video-move');
+    var button2 = document.querySelector('#play');
+    var button3 = document.querySelector('#pause');
+
+    button2.addEventListener("click", function (event) {
+      button.play()
+      habillage.classList.add("d-none")
+    })
+     button3.addEventListener("click", function (event) {
+      button.pause()
+      habillage.classList.remove("d-none")
+    })
+
+ </script>

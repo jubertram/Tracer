@@ -12,6 +12,9 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "moves/index";
+@import "spot_moves/index";
+
 
 .fa-star {
   color:  #FFD700;
@@ -20,4 +23,10 @@
 .review-rating {
   cursor:    pointer;
   font-size: 2rem;
+}
+
+#reviews-average {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
 }

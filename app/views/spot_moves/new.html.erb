@@ -2,6 +2,81 @@
 
 
 <%= simple_form_for [@spot, @spot_move] do |f| %>
-  <%= f.association :move, as: :check_boxes, label: "Nom du mouvement", label_html: { class: 'form-inputs'} %>
-  <%= f.submit "Fini!", class: "btn btn-primary" %>
+  <%= f.association :move, as: :select, label: "Nom du move", label_html: { class: 'form-inputs'} %>
+  <%= f.input :longitude, id:"longitude2"%>
+  <%= f.input :latitude, id:"latitude2" %>
+<div id="map1" data-markers=<%= @markers.to_json %> data data-longitude=<%= @spot.longitude %> data-latitude=<%= @spot.latitude %> style="width:100%; height:400px"></div>
+  <%= f.submit "Enregistre le move", class: "btn btn-primary" %>
+  <%= link_to "Fin d'ajout!" , spot_path(@spot)%>
   <% end %>
+
+
+
+<script>
+var map1 = document.querySelector("#map1")
+mapboxgl.accessToken = 'pk.eyJ1IjoiY2hvc3VrZSIsImEiOiJjbGFiMnhtbnowZTE3M3BsZjJjMnFsaWcxIn0.v30HKeYX-ohBi1jLJYJYew';
+var map = new mapboxgl.Map({
+  container: 'map1',
+style: 'mapbox://styles/mapbox/satellite-streets-v12',
+center: [map1.dataset.longitude, map1.dataset.latitude],
+zoom: 18
+});
+
+// Select all checkboxes with the name 'settings' using querySelectorAll.
+var moveInput = document.querySelector("#spot_move_move_id");
+var longitude2 = document.querySelector("#spot_move_longitude")
+var latitude2 = document.querySelector("#spot_move_latitude")
+
+    // Create a HTML element for your custom marker
+
+var enabledSettings = []
+  var addMarker= () => {
+    longitude2.value = map1.dataset.longitude
+    latitude2.value = map1.dataset.latitude
+
+    var customMarker = document.createElement("div")
+    customMarker.className = "marker"
+    customMarker.style.backgroundImage = `url('https://res.cloudinary.com/dxx5x9kzp/image/upload/v1669905490/Groupmarker_eai2sh.png')`
+    customMarker.style.backgroundSize = "contain"
+    customMarker.style.width = "34px"
+    customMarker.style.height = "45px"
+
+    let marker = new mapboxgl.Marker({
+        element: customMarker,
+        draggable: true
+      })
+    .setLngLat([map1.dataset.longitude, map1.dataset.latitude])
+    .addTo(map);
+
+    function onDragEnd() {
+      longitude2.value = marker.getLngLat().lng
+      latitude2.value = marker.getLngLat().lat
+    }
+
+      marker.on('dragend', onDragEnd);
+  }
+
+    // Create a HTML element for your custom marker
+
+  var markers = JSON.parse(map1.dataset.markers)
+  console.log(markers);
+    markers.forEach(marker => {
+      const customMarker2 = document.createElement("div")
+      customMarker2.className = "marker2"
+      customMarker2.style.backgroundImage = `url('https://res.cloudinary.com/dxx5x9kzp/image/upload/v1669905490/Groupmarker_eai2sh.png')`
+      customMarker2.style.backgroundSize = "contain"
+      customMarker2.style.width = "34px"
+      customMarker2.style.height = "45px"
+
+      var addedMarker = new mapboxgl.Marker(customMarker2)
+        .setLngLat([marker.lng, marker.lat])
+        .addTo(map);
+
+      customMarker2.markerInstance = addedMarker
+    });
+// Use Array.forEach to add an event listener to each checkbox.
+
+  moveInput.addEventListener('change', function() {
+      addMarker()
+  })
+</script>

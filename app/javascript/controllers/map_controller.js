@@ -12,12 +12,14 @@ export default class extends Controller {
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
-      container: this.element,
-      style: "mapbox://styles/chosuke/clb2cktqf000t14sb5l605sr1"
+      container: 'map1',
+      style: "mapbox://styles/chosuke/clb2cktqf000t14sb5l605sr1",
+      center: [2.60, 46],
+      zoom: 4
     })
 
     this.#addMarkersToMap()
-    this.#fitMapToMarkers()
+    // this.#fitMapToMarkers()
 
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl }))

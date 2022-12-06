@@ -1,10 +1,19 @@
   <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
 
+  <%= link_to profile_path do %>
+    <% if @user.photo.attached? %>
+      <div class="avatar-profile-search">
+        <%= cl_image_tag @user.photo.key %>
+      </div>
+    <% end %>
+  <% end %>
+
 <div style="position: relative;">
 
   <div style="width: 100vw; height: 100vh;"
     data-controller="map"
+    id="map1"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
@@ -19,13 +28,13 @@
     </div>
   <% end %>
 
-  <div style="position: absolute; top:15px;left:50px;">
-      <% if @user.photo.attached? %>
-        <%= link_to @user.photo, profile_path %>
-      <% else %>
-      <%= link_to "🙋", profile_path, class:"text-decoration-none" %>
-    <% end %>
-  </div>
+  <%# <div style="position: absolute; top:15px;left:50px;"> %>
+      <%# <% if @user.photo.attached? %>
+        <%# <%= link_to @user.photo.key, profile_path %>
+      <%# <% else %>
+      <%# <%= link_to "🙋", profile_path, class:"text-decoration-none" %>
+    <%# <% end %>
+  <%# </div> %>
 
   <%# <%= render "spots_carousel", spots: @spots %>
 </div>
