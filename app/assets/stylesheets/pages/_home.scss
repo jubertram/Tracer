@@ -1,19 +1,25 @@
 // Specific CSS for your home-page
-#home_title {
-  color: yellow;
+body {
+  background: linear-gradient(40deg, #452E4F, #F4F4F4);
 }
 
 .home_container {
-  background-image: url("https://res.cloudinary.com/df1jnnjv1/image/upload/v1669731019/Tracer/parkour_1_y0jdtd.jpg");
   font-size: 16px;
   background-size: cover;
   background-position: center;
   max-width: 100%;
-  height: calc(100vh - 66px);
+  height: 100vh;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+}
+
+#home-title {
+  position: absolute;
+  top: 760px;
+  left: 106px;
+  font-family: 'Abril Fatface', cursive;
+  color: #452E4F;
+  font-size: 70px;
 }
 
 .home_button {
@@ -32,34 +38,109 @@
 .home_content {
   width: 100%;
   text-align: center;
+  padding-top: 15%;
 }
 
-#home_map {
+.ball {
+  display: inline-block;
+  width: 180%;
+  height: 180%;
+  margin: 0;
   border-radius: 50%;
-  background-image: url("https://res.cloudinary.com/df1jnnjv1/image/upload/v1669736195/Tracer/riviera24-francia-la-mappa-degli-autovelox-dal-confine-di-stato-a-cannes-334781.large_zidn2h.jpg");
-  height: 300px;
+  position: relative;
+  -webkit-transform-style: preserve-3d;
+  background: url('http://hop.ie/balls/images/world-map-one-color.png') repeat-x;
+  background-size: auto 100%;
+  -webkit-animation: move-map 30s infinite linear;
+  -moz-animation: move-map 30s infinite linear;
+  -o-animation: move-map 30s infinite linear;
+  -ms-animation: move-map 30s infinite linear;
+  animation: move-map 30s infinite linear;
+}
+
+.ball:before {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: -40px 10px 70px 10px rgba(0,0,0,0.5) inset;
+  z-index: 2;
+}
+
+.ball:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  -webkit-filter: blur(0);
+  opacity: 0.3;
+  background: radial-gradient(circle at 50% 80%, #81e8f6, #76deef 10%, #055194 66%, #062745 100%);
+}
+
+
+body {
+ position: relative;
+}
+
+.stage {
   width: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  // transition: background-position 3s;
-  -webkit-animation: 4s linear 0s infinite alternate move_eye;
-          animation: 4s linear 0s infinite alternate move_eye;
+  height: 300px;
+  display: inline-block;
+  margin: 20px;
+  position: absolute;
+  top: 50%;
+  left: 37%;
+  transform: translate(-50%, -50%);
+  -webkit-perspective: 1200px;
+  -moz-perspective: 1200px;
+  -ms-perspective: 1200px;
+  -o-perspective: 1200px;
+  perspective: 1200px;
+  -webkit-perspective-origin: 50% 50%;
+  -moz-perspective-origin: 50% 50%;
+  -ms-perspective-origin: 50% 50%;
+  -o-perspective-origin: 50% 50%;
+  perspective-origin: 50% 50%;
 }
 
-@-webkit-keyframes move_eye { from { background-position: left -20%; } to { background-position: left 100%; }  }
-        @keyframes move_eye { from { background-position: left -20%; } to { background-position: left 100%; }  }
+@-moz-keyframes move-map {
+  0% {
+    background-position: -849px 0; }
 
-@media only screen and (max-width: 700px) {
-  #home_map {
-    height: 150px;
-    width: 150px;
-  }
+  100% {
+    background-position: 0 0; } }
+
+@-webkit-keyframes move-map {
+  0% {
+    background-position: 0 0; }
+  100% {
+    background-position: -849px 0; }
 }
 
-@media only screen and (max-width: 1000px) {
-  #home_map {
-    height: 200px;
-    width: 200px;
-  }
-}
+
+@-o-keyframes move-map {
+  0% {
+    background-position: -849px 0; }
+
+  100% {
+    background-position: 0 0; } }
+
+@-ms-keyframes move-map {
+  0% {
+    background-position: -849px 0; }
+
+  100% {
+    background-position: 0 0; } }
+
+@keyframes move-map {
+  0% {
+    background-position: -849px 0; }
+
+  100% {
+    background-position: 0 0; } }
