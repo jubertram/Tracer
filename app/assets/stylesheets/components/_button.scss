@@ -45,7 +45,8 @@ border-radius: 35px;
 .move-bouton {
   width: 16vh;
   height: 42px;
-  background: radial-gradient(276.04% 1435.42% at 82.69% 217.71%, #7077A0 0%, #4F3A57 100%);
+  background: rgb(112,119,160);
+  background: linear-gradient(280deg, rgba(112,119,160,1) 0%, rgba(79,58,87,1) 100%);
   border-radius: 100px;
   display: flex;
   justify-content: center;
@@ -70,3 +71,30 @@ border-radius: 35px;
     color: #FFFFFF;
   }
 }
+
+
+
+/* Card button */
+.card-bouton {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  background: rgb(112,119,160);
+  background: linear-gradient(280deg, rgba(112,119,160,1) 0%, rgba(79,58,87,1) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  border-radius: 21px;
+  filter: drop-shadow(0px 8px 20px rgba(10, 27, 70, 0.2));
+    .card-info {
+      display: flex;
+      align-items: center;
+      align-items: space-evenly;
+      p {
+        color: #FFFFFF;
+        margin-top: 1rem;
+      }
+    }
+    img {
+      border-radius: 20px 0px 0px 20px;
+    }
+  }

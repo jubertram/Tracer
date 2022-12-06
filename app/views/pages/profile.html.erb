@@ -80,11 +80,16 @@
     <h2 style="color: #452E4F;">Favoris</h2>
 
     <% @bookmarks.each do |bookmark| %>
-      <%= bookmark.spot.address %>
+      <% bookmark.spot.address %>
       <% if bookmark.spot.photo_url.attached? %>
-        <div>
-          <%= cl_image_tag bookmark.spot.photo_url.key, height: 150, width: 150, crop: :fill %>
-        </div>
+        <%= link_to spot_path(bookmark.spot) do %>
+          <div class="card-bouton">
+            <%= cl_image_tag bookmark.spot.photo_url.key, height: 100, width: 100, crop: :fill %>
+            <div class="card-info">
+              <p class="card-address"><%= bookmark.spot.address %></p>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
   </section>
