@@ -16,8 +16,10 @@
     <% end %>
   </div>
 
-    <%= video_tag @move.video, controls: true, class: "video-move" %>
+      <%= video_tag @move.video, class: "video-move" %>
 
+  <button id="play">play</button>
+  <button id="pause">pause</button>
 <div id="habillage3">
   <section class="flex-profile">
     <h1 style="margin: 1rem auto; font-size: calc(1.9rem + 1.5vw); font-weight: 700;"><%= @move.name %></h1>
@@ -31,3 +33,20 @@
     </div>
   </section>
 </div>
+
+  <script>
+    const habillage = document.getElementById("habillage3");
+    const button = document.querySelector('.video-move');
+    const button2 = document.querySelector('#play');
+    const button3 = document.querySelector('#pause');
+
+    button2.addEventListener("click", function (event) {
+      button.play()
+      habillage.classList.add("d-none")
+    })
+     button3.addEventListener("click", function (event) {
+      button.pause()
+      habillage.classList.remove("d-none")
+    })
+
+ </script>
