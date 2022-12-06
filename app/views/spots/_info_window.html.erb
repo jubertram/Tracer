@@ -1,4 +1,6 @@
-<%= image_tag spot.photo_url, width: "100%", height: "auto" %>
+<% if spot.photo_url.attached? %>
+  <%= cl_image_tag spot.photo_url.key, width: "100%", height: "auto" %>
+<% end %>
 <h2 class="popup-title"><%= link_to spot.address, spot_path(spot) %></h2>
 <ul class="list-unstyled">
 <p>(<%= spot.moves.length %> moves)</p>
