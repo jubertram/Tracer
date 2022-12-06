@@ -68,6 +68,12 @@
   }
 }
 
+.mapboxgl-ctrl-group {
+  position: fixed;
+  top: 43px;
+  right: 29px;
+  z-index: 1;
+  }
 
 
 .mapboxgl-control-container .mapboxgl-ctrl-top-right .mapboxgl-ctrl {
@@ -101,6 +107,7 @@
     align-items: center;
     margin: 0 !important;
     }
+
 
   .mapboxgl-ctrl-top-right {
     position: absolute!important;
