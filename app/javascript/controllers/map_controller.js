@@ -15,7 +15,7 @@ export default class extends Controller {
       container: 'map1',
       style: "mapbox://styles/chosuke/clb2cktqf000t14sb5l605sr1",
       center: [2.60, 46],
-      zoom: 5
+      zoom: 4
     })
 
     this.#addMarkersToMap()
