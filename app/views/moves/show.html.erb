@@ -16,7 +16,7 @@
     <% end %>
   </div>
 
-      <%= video_tag @move.video, class: "video-move" %>
+      <%= video_tag @move.video, muted: :muted, class: "video-move" %>
 
   <button id="play">play</button>
   <button id="pause">pause</button>
@@ -43,10 +43,14 @@
     button2.addEventListener("click", function (event) {
       button.play()
       habillage.classList.add("d-none")
+      button2.classList.add("d-none")
+      button3.classList.remove("d-none")
     })
-     button3.addEventListener("click", function (event) {
+    button3.addEventListener("click", function (event) {
       button.pause()
       habillage.classList.remove("d-none")
+      button3.classList.add("d-none")
+      button2.classList.remove("d-none")
     })
 
- </script>
+</script>
