@@ -5,6 +5,11 @@
 <%= simple_form_for (@spot) do |f| %>
 
   <div class="form-inputs">
+    <%= f.label :name, "Nom du spot" %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="form-inputs">
     <%= f.label :address, "Adresse" %><br>
     <%= f.text_field :address %>
   </div>
@@ -22,5 +27,15 @@
     <%= f.submit "Crée un nouveau spot", class: "btn btn-primary" %>
   </div>
 
+<% end %>
 
+
+<%= link_to spots_path do %>
+  <div class="round-button">
+    <div class="circle-back">
+    </div>
+    <svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 16L1 8.5L9 1" stroke="#4F3A57" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
 <% end %>
