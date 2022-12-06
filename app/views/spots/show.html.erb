@@ -1,7 +1,7 @@
 
 
 <% if @spot.photo_url.attached? %>
-  <div class ="fond" style="background-image: url('http://res.cloudinary.com/dxx5x9kzp/image/upload/v1/development/<%= @spot.photo_url.key %>');"></div>
+  <div class ="fond" style="background-image: url('<%= cl_image_path @spot.photo_url.key %>');"></div>
 <% end %>
 
 <%= link_to spots_path do %>
@@ -66,7 +66,7 @@
 
     <% if @spot.reviews.find_by(user_id: current_user) == nil %>
       <div class="review">
-        <h2>laisse une évalutation</h2>
+        <h2>laisse une évaluation</h2>
         <%= simple_form_for [@spot, @review] do |f| %>
           <%= f.input :rating, as: :hidden %>
           <div class="my-3" id="review-star-ratings">
