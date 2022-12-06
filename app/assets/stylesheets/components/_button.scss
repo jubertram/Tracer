@@ -41,6 +41,20 @@ border-radius: 35px;
   border-radius: 10px;
 }
 
+.lil-square-button {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  backdrop-filter: blur(5px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 10px;
+}
+
 /* Rectangle 1 */
 .move-bouton {
   width: 16vh;
@@ -78,7 +92,6 @@ border-radius: 35px;
 .card-bouton {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-between;
 
   background: rgb(112,119,160);
   background: linear-gradient(280deg, rgba(112,119,160,1) 0%, rgba(79,58,87,1) 100%);
