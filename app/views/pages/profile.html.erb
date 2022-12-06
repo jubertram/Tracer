@@ -2,7 +2,7 @@
   body {
     background-image: url('https://res.cloudinary.com/ddz8gswxn/image/upload/v1670238200/fond_profile_gh9sjh.png');
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
   }
 </style>
 
@@ -82,7 +82,9 @@
 
     <% @bookmarks.each do |bookmark| %>
       <%= bookmark.spot.address %>
-      <div><%= cl_image_tag bookmark.spot.photo_url.key, height: 150, width: 150, crop: :fill %>  </div>
+      <% if bookmark.spot.photo_url.attached? %>
+        <div><%= cl_image_tag bookmark.spot.photo_url.key, height: 150, width: 150, crop: :fill %>  </div>
+      <% end %>
     <% end %>
 
   </section>
