@@ -2,7 +2,7 @@
   body {
     background-image: url('https://res.cloudinary.com/ddz8gswxn/image/upload/v1670238200/fond_profile_gh9sjh.png');
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
   }
 </style>
 
@@ -79,11 +79,18 @@
     <p style="color: #452E4F;"><%= @user.bio %></p>
     <h2 style="color: #452E4F;">Favoris</h2>
 
-
     <% @bookmarks.each do |bookmark| %>
-      <%= bookmark.spot.address %>
-      <div><%= cl_image_tag bookmark.spot.photo_url.key, height: 150, width: 150, crop: :fill %>  </div>
+      <% bookmark.spot.address %>
+      <% if bookmark.spot.photo_url.attached? %>
+        <%= link_to spot_path(bookmark.spot) do %>
+          <div class="card-bouton">
+            <%= cl_image_tag bookmark.spot.photo_url.key, height: 100, width: 100, crop: :fill %>
+            <div class="card-info">
+              <p class="card-address"><%= bookmark.spot.address %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     <% end %>
-
   </section>
 </div>

@@ -39,5 +39,62 @@ border-radius: 35px;
   backdrop-filter: blur(5px);
   /* Note: backdrop-filter has minimal browser support */
   border-radius: 10px;
-
 }
+
+/* Rectangle 1 */
+.move-bouton {
+  width: 16vh;
+  height: 42px;
+  background: rgb(112,119,160);
+  background: linear-gradient(280deg, rgba(112,119,160,1) 0%, rgba(79,58,87,1) 100%);
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    left: 14.48%;
+    right: 23.45%;
+    top: 27.78%;
+    bottom: 36.51%;
+    font-family: 'Helvetica Neue';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    /* or 17px */
+    letter-spacing: 0.04em;
+    margin-bottom: 0rem;
+    color: #FFFFFF;
+  }
+  a {
+    text-decoration: none;
+    color: #FFFFFF;
+  }
+}
+
+
+
+/* Card button */
+.card-bouton {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  background: rgb(112,119,160);
+  background: linear-gradient(280deg, rgba(112,119,160,1) 0%, rgba(79,58,87,1) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  border-radius: 21px;
+  filter: drop-shadow(0px 8px 20px rgba(10, 27, 70, 0.2));
+    .card-info {
+      display: flex;
+      align-items: center;
+      align-items: space-evenly;
+      p {
+        color: #FFFFFF;
+        margin-top: 1rem;
+      }
+    }
+    img {
+      border-radius: 20px 0px 0px 20px;
+    }
+  }

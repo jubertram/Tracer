@@ -1,3 +1,5 @@
+
+
 <% if @spot.photo_url.attached? %>
   <div class ="fond" style="background-image: url('http://res.cloudinary.com/dxx5x9kzp/image/upload/v1/development/<%= @spot.photo_url.key %>');"></div>
 <% end %>
@@ -17,26 +19,12 @@
   <section class="flex-profile">
     <h1 style="margin: 1.5rem auto; font-weight: 700;"><%= @spot.address %></h1>
       <div class="choices">
-
         <div class="square-button">
-          <label class="bookmarkeur">
-            <input type="checkbox"/>
-              <div>
-                <svg class="background" viewBox="0 0 16 16" stroke="currentColor">
-                  <path d="M0.5,23.124911 L6.9318135,16.6008331 C6.93933086,16.5932441 6.93933086,16.5932441 6.94691994,16.5857267 C7.53686305,16.0041267 8.48658644,16.01089 9.0681865,16.6008331 L15.5,23.124911 L15.5,2.02869001 C15.5,1.18283629 14.8268205,0.5 14,0.5 L2,0.5 C1.17317953,0.5 0.5,1.18283629 0.5,2.02869001 L0.5,23.124911 Z"></path>
-                </svg>
-                <svg class="active" viewBox="0 0 16 16" fill="currentColor">
-                  <path d="M2,0 L14,0 C15.1045695,0 16,0.908275455 16,2.02869001 L16,23.7565572 C16,23.8910069 15.8925483,24 15.76,24 C15.696348,24 15.6353031,23.9743516 15.5902944,23.9286973 L8.71212433,16.9518598 C8.32439096,16.5585644 7.69124204,16.5540555 7.29794663,16.9417889 C7.29456578,16.9451219 7.29120871,16.948479 7.28787567,16.9518598 L0.409705627,23.9286973 C0.315979797,24.0237676 0.164020203,24.0237676 0.0702943725,23.9286973 C0.0252856417,23.8830429 0,23.8211222 0,23.7565572 L0,2.02869001 C0,0.908275455 0.8954305,0 2,0 Z"fill="url(#paint0_radial_362_44)">
-                  </path>
-                  <defs>
-                    <radialGradient id="paint0_radial_362_44" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12.4987 32.161) rotate(-105.479) scale(41.7126 94.5297)">
-                      <stop stop-color="#7077A0"/>
-                      <stop offset="1" stop-color="#4F3A57"/>
-                    </radialGradient>
-                  </defs>
-                </svg>
-              </div>
-          </label>
+          <% if @bookmark.first %>
+            <%= link_to '<i class="fa-solid fa-bookmark" style="color: #5B5071"></i>'.html_safe, spot_bookmark_path(@spot.id), data: {turbo_method: :delete} %>
+          <% else @bookmark == nil %>
+            <%= link_to '<i class="fa-regular fa-bookmark" style="color: #5B5071"></i>'.html_safe, spot_bookmarks_path(@spot.id), data: {turbo_method: :post} %>
+          <% end %>
         </div>
 
         <%= link_to spots_path do %>
@@ -53,32 +41,22 @@
           </div>
         <% end %>
 
-        <div class="square-button">
-          <svg width="18" height="17" viewBox="0 0 18 17"   fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11.4411 16.9987H11.3862C11.1848 16.9862 10.9931 16.9055 10.8408 16.769C10.6885 16.6326 10.5843 16.4481 10.5443 16.2443L9.135 9.10558C9.09914 8.92435 9.01235 8.75799 8.88543 8.62721C8.75851 8.49642 8.59707 8.40698 8.42121 8.37002L1.4937 6.91776C1.29554 6.8772 1.11598 6.77022 0.983012 6.61349C0.850042 6.45676 0.771137 6.2591 0.7586 6.05132C0.746064 5.84354 0.8006 5.63732 0.913706 5.46483C1.02681 5.29233 1.19213 5.16325 1.38388 5.09772L16.0259 0.0713823C16.1903 0.00145026 16.3708 -0.017626 16.5455 0.0164856C16.7202 0.0505972 16.8815 0.136419 17.0097 0.26346C17.1378 0.390502 17.2272 0.55326 17.2671 0.731841C17.3069 0.910421 17.2953 1.09709 17.2339 1.26903L12.3563 16.3575C12.2926 16.5526 12.1687 16.721 12.0034 16.8368C11.8382 16.9526 11.6407 17.0095 11.4411 16.9987Z" fill="url(#paint0_radial_362_55)"/>
-            <defs>
-              <radialGradient id="paint0_radial_362_55" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(14.4287 37.0104) rotate(-105.073) scale(48.5992 107.528)">
-                <stop stop-color="#7077A0"/>
-                <stop offset="1" stop-color="#4F3A57"/>
-              </radialGradient>
-            </defs>
-          </svg>
-        </div>
+        <%= link_to "https://www.google.com/maps/dir//#{@spot.address}", target:"_blank" do %>
+          <div class="square-button">
+            <svg width="18" height="17" viewBox="0 0 18 17"   fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.4411 16.9987H11.3862C11.1848 16.9862 10.9931 16.9055 10.8408 16.769C10.6885 16.6326 10.5843 16.4481 10.5443 16.2443L9.135 9.10558C9.09914 8.92435 9.01235 8.75799 8.88543 8.62721C8.75851 8.49642 8.59707 8.40698 8.42121 8.37002L1.4937 6.91776C1.29554 6.8772 1.11598 6.77022 0.983012 6.61349C0.850042 6.45676 0.771137 6.2591 0.7586 6.05132C0.746064 5.84354 0.8006 5.63732 0.913706 5.46483C1.02681 5.29233 1.19213 5.16325 1.38388 5.09772L16.0259 0.0713823C16.1903 0.00145026 16.3708 -0.017626 16.5455 0.0164856C16.7202 0.0505972 16.8815 0.136419 17.0097 0.26346C17.1378 0.390502 17.2272 0.55326 17.2671 0.731841C17.3069 0.910421 17.2953 1.09709 17.2339 1.26903L12.3563 16.3575C12.2926 16.5526 12.1687 16.721 12.0034 16.8368C11.8382 16.9526 11.6407 17.0095 11.4411 16.9987Z" fill="url(#paint0_radial_362_55)"/>
+              <defs>
+                <radialGradient id="paint0_radial_362_55" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(14.4287 37.0104) rotate(-105.073) scale(48.5992 107.528)">
+                  <stop stop-color="#7077A0"/>
+                  <stop offset="1" stop-color="#4F3A57"/>
+                </radialGradient>
+              </defs>
+            </svg>
+          </div>
+        <% end %>
       </div>
 
       <%= link_to 'itinéraire (pas fait)', spots_path, style: "display: none;" %>
-
-    <% if @bookmark.first %>
-      <%= link_to 'bookmark d', spot_bookmark_path(@spot.id), data: {turbo_method: :delete} %>
-    <% else @bookmark == nil %>
-      <%= link_to 'bookmark c', spot_bookmarks_path(@spot.id), data: {turbo_method: :post} %>
-    <% end %>
-
-    <% if @bookmark.first %>
-      <%= link_to 'bookmark d', spot_bookmark_path(@spot.id), data: {turbo_method: :delete} %>
-    <% else @bookmark == nil %>
-      <%= link_to 'bookmark c', spot_bookmarks_path(@spot.id), data: {turbo_method: :post} %>
-    <% end %>
 
     <div id="reviews-average" data-average-review="<%= @average_rating %>">
       <% for num in (1..5) %>
@@ -86,30 +64,84 @@
       <% end %>
     </div>
 
-    <div class="review">
-      <h2>laisse une évalutation</h2>
-      <%= simple_form_for [@spot, @review] do |f| %>
-        <%= f.input :rating, as: :hidden %>
-        <div class="my-3" id="review-star-ratings">
-          <% Review::AUTHORIZED_RATINGS.each do |index| %>
-            <i id="<%= index %>" class="review-rating fa-regular fa-star"></i>
-          <% end %>
-        </div>
-        <%= f.submit class: "btn btn-primary", value: "Valider", id:"submit-star" %>
-      <% end %>
-    </div>
-
-    <h2><%= @spot.spot_difficulty %></h2>
-
-      <ul>
-        <% @spot.moves.each do |move| %>
-          <li><%= link_to move.name, move_path(move) %></li>
+    <% if @spot.reviews.find_by(user_id: current_user) == nil %>
+      <div class="review">
+        <h2>laisse une évalutation</h2>
+        <%= simple_form_for [@spot, @review] do |f| %>
+          <%= f.input :rating, as: :hidden %>
+          <div class="my-3" id="review-star-ratings">
+            <% Review::AUTHORIZED_RATINGS.each do |index| %>
+              <i id="<%= index %>" class="review-rating fa-regular fa-star"></i>
+            <% end %>
+          </div>
+          <%= f.submit class: "btn btn-primary", value: "Valider", id:"submit-star" %>
         <% end %>
-      </ul>
+      </div>
+    <% end %>
+
+    <h2 style="margin: 2vh 0; color: #452E4F;"><%= @spot.spot_difficulty %></h2>
+
+
+    <ul style="padding-left: 0; filter: drop-shadow(0px 8px 20px rgba(10, 27, 70, 0.2));">
+      <div style="gap: 36px;
+                  display: inline-flex;
+                  flex-wrap: wrap;
+                  justify-content: space-between;">
+        <% @spot.moves.each do |move| %>
+          <li class="move-bouton">
+            <p style="width: 12ch; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><%= link_to move.name, move_path(move) %></p>
+              <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 8H1M11 1L17 8L11 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+          </li>
+        <% end %>
+      </div>
+    </ul>
+
+  <div id="map3" data-markers=<%= @markers.to_json %> style="width:100%; height:350px"></div>
+
   </section>
 </div>
 
 <script>
+// ------------------------------------------- MAP ------------------------------------------
+
+// je créé la carte
+var map3 = document.querySelector("#map3")
+mapboxgl.accessToken = 'pk.eyJ1IjoiY2hvc3VrZSIsImEiOiJjbGFiMnhtbnowZTE3M3BsZjJjMnFsaWcxIn0.v30HKeYX-ohBi1jLJYJYew';
+var map = new mapboxgl.Map({
+  container: 'map3',
+style: 'mapbox://styles/mapbox/satellite-streets-v12',
+zoom: 18
+});
+
+// j'ajoute les markers
+
+var markers3 = JSON.parse(map3.dataset.markers)
+console.log(markers3);
+markers3.forEach(marker => {
+  const customMarker3 = document.createElement("div")
+  customMarker3.className = "marker3"
+  customMarker3.style.backgroundImage = `url('https://res.cloudinary.com/dxx5x9kzp/image/upload/v1669905490/Groupmarker_eai2sh.png')`
+  customMarker3.style.backgroundSize = "contain"
+  customMarker3.style.width = "34px"
+  customMarker3.style.height = "45px"
+
+  var addedMarker3 = new mapboxgl.Marker(customMarker3)
+    .setLngLat([marker.lng, marker.lat])
+    .addTo(map);
+
+  customMarker3.markerInstance = addedMarker3
+
+// je centre la map par rapport aux markers
+    const bounds = new mapboxgl.LngLatBounds()
+    markers3.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+    map.fitBounds(bounds, { padding: 50, maxZoom: 20, duration: 0 })
+});
+
+
+// ------------------------------ Evaluation --------------------------------------------
+
   // je créé une fonction qui va changer la classe appliquée aux étoiles
   var toggleColorStars = (stars, rating) => {
     stars.forEach((star) => {
