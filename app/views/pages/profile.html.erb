@@ -79,11 +79,13 @@
     <p style="color: #452E4F;"><%= @user.bio %></p>
     <h2 style="color: #452E4F;">Favoris</h2>
 
-
     <% @bookmarks.each do |bookmark| %>
       <%= bookmark.spot.address %>
-      <div><%= cl_image_tag bookmark.spot.photo_url.key, height: 150, width: 150, crop: :fill %>  </div>
+      <% if bookmark.spot.photo_url.attached? %>
+        <div>
+          <%= cl_image_tag bookmark.spot.photo_url.key, height: 150, width: 150, crop: :fill %>
+        </div>
+      <% end %>
     <% end %>
-
   </section>
 </div>
