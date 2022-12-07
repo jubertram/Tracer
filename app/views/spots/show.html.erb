@@ -4,7 +4,7 @@
   <div class ="fond" style="background-image: url('<%= cl_image_path @spot.photo_url.key %>');"></div>
 <% end %>
 
-<%= link_to :back do %>
+<%= link_to spots_path do %>
   <div class="round-button">
     <div class="circle-back">
     </div>
@@ -17,7 +17,13 @@
 
 <div id="habillage1">
   <section class="flex-profile">
-    <h1 style="margin: 1.5rem auto; font-weight: 700;"><%= @spot.address %></h1>
+    <h1 style="margin: 1.5rem auto; font-weight: 700;">
+      <% if @spot.name == ""%>
+        <%= @spot.address.capitalize %>
+      <% else %>
+        <%= @spot.name.capitalize %>
+      <% end %>
+    </h1>
       <div class="choices">
         <div class="square-button">
           <% if @bookmark.first %>
@@ -64,20 +70,6 @@
       <% end %>
     </div>
 
-    <% if @spot.reviews.find_by(user_id: current_user) == nil %>
-      <div class="review">
-        <h3>laisse une évaluation</h3>
-        <%= simple_form_for [@spot, @review] do |f| %>
-          <%= f.input :rating, as: :hidden %>
-          <div class="my-3" id="review-star-ratings">
-            <% Review::AUTHORIZED_RATINGS.each do |index| %>
-              <i id="<%= index %>" class="review-rating fa-regular fa-star"></i>
-            <% end %>
-          </div>
-          <%= f.submit class: "btn btn-primary", value: "Valider", id:"submit-star" %>
-        <% end %>
-      </div>
-    <% end %>
 
     <h2 style="margin: 2vh 0; color: #452E4F;"><%= @spot.spot_difficulty %></h2>
 
@@ -101,9 +93,24 @@
 
   <div id="map3" data-markers=<%= @markers.to_json %> style="width:100%; height:350px"></div>
 
+    <% if @spot.reviews.find_by(user_id: current_user) == nil %>
+      <div class="review">
+        <h3>Laisse une évaluation</h3>
+        <div class="d-flex">
+          <%= simple_form_for [@spot, @review] do |f| %>
+            <%= f.input :rating, as: :hidden %>
+            <div class="my-3" id="review-star-ratings">
+              <% Review::AUTHORIZED_RATINGS.each do |index| %>
+                <i id="<%= index %>" class="review-rating fa-regular fa-star"></i>
+              <% end %>
+            </div>
+            <%= f.submit class: "btn btn-primary", value: "Valider", id:"submit-star" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </section>
 </div>
-
 <script>
 // ------------------------------------------- MAP ------------------------------------------
 
@@ -115,13 +122,12 @@ var map = new mapboxgl.Map({
 style: 'mapbox://styles/mapbox/satellite-streets-v12',
 zoom: 18
 });
-
+console.log(map3.dataset.markers);
 // j'ajoute les markers
-
 var markers3 = JSON.parse(map3.dataset.markers)
-console.log(markers3);
+console.log(markers3)
 markers3.forEach(marker => {
-  const popup = new mapboxgl.Popup().setHTML(marker.info_window2)
+  const popup = new mapboxgl.Popup().setHTML(marker.info_window2.replaceAll("*", " "))
 
   // Create a HTML element for your custom marker
   const customMarker3 = document.createElement("div")
