@@ -1,56 +1,88 @@
-  <%= link_to :back do %>
-    <div class="round-button">
-      <div class="circle-back">
-      </div style="position: absolute; top:15px;left:40px;">
-      <svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M9 16L1 8.5L9 1" stroke="#4F3A57" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+<%= link_to :back do %>
+  <div class="round-button">
+    <div class="circle-back">
+    </div style="position: absolute; top:15px;left:40px;">
+    <svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 16L1 8.5L9 1" stroke="#4F3A57" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+<% end %>
+
+<%= link_to profile_path do %>
+  <% if @user.photo.attached? %>
+    <div class="avatar-profile-move">
+      <%= cl_image_tag @user.photo.key %>
     </div>
   <% end %>
+<% end %>
 
-  <div style="position: absolute; top:15px;left:50px;">
-      <% if @user.photo.attached? %>
-        <%= link_to @user.photo, profile_path %>
-      <% else %>
-      <%= link_to "🙋", profile_path, class:"text-decoration-none" %>
-    <% end %>
-  </div>
 
-      <%= video_tag @move.video, muted: :muted, class: "video-move" %>
+<%= video_tag @move.video, muted: :muted, class: "video-move", style: "position: fixed;" %>
 
-  <button id="play">play</button>
-  <button id="pause">pause</button>
-<div id="habillage3">
+
+<style>
+  button {
+    width: 75px !important;
+    height: 75px !important;
+    background: rgba(255, 255, 255, 0.6)!important;
+    border: 1px solid rgba(255, 255, 255, 0.52)!important;
+    backdrop-filter: blur(5px)!important;
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 100px!important;
+    top: 15vh;
+    position: relative;
+    padding-left: 1.5vh;
+  }
+
+</style>
+
+<div style="display: flex; justify-content: center;">
+  <button id="play">
+    <svg width="21" height="30" viewBox="0 0 21 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8.52573 1.72379C7.81106 1.06518 6.91861 0.631126 5.95929 0.47556C4.99997 0.319993 4.01608 0.449779 3.12991 0.848786C2.26966 1.19677 1.53269 1.79333 1.01316 2.56224C0.493634 3.33115 0.215137 4.23749 0.213257 5.16546V24.8238C0.215137 25.7518 0.493634 26.6581 1.01316 27.427C1.53269 28.196 2.26966 28.7925 3.12991 29.1405C3.76217 29.4273 4.44816 29.5764 5.14241 29.578C6.3934 29.5725 7.59827 29.105 8.52573 28.2655L19.2007 18.4363C19.6781 17.9991 20.0594 17.4673 20.3202 16.8748C20.581 16.2823 20.7157 15.642 20.7157 14.9946C20.7157 14.3473 20.581 13.707 20.3202 13.1145C20.0594 12.5219 19.6781 11.9902 19.2007 11.553L8.52573 1.72379ZM4.625 24.8238V5.16546L16 14.9946L4.625 24.8238Z" fill="url(#paint0_radial_473_361)"/>
+      <defs>
+        <radialGradient id="paint0_radial_473_361" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(17.1672 63.9093) rotate(-101.016) scale(82.0226 135.548)">
+          <stop stop-color="#7077A0"/>
+          <stop offset="1" stop-color="#4F3A57"/>
+        </radialGradient>
+      </defs>
+    </svg>
+  </button>
+  <button id="pause" class="d-none">pause
+  </button>
+</div>
+
+<div id="habillage1" style="bottom: 0%;">
   <section class="flex-profile">
     <h1 style="margin: 1rem auto; font-size: calc(1.9rem + 1.5vw); font-weight: 700;"><%= @move.name %></h1>
-    <div class="choices">
-      <h2 style="margin-top: 2vh; color: #452E4F;">📍Pré-requis: </h2>
+    <div>
+      <h2 style="margin-top: 4vh; color: #452E4F;">📍Pré-requis </h2>
         <p style="color: #452E4F;"><%= @move.pre_requis %></p>
-      <h2 style="margin-top: 2vh; color: #452E4F;">ℹ️ Description: </h2>
+      <h2 style="margin-top: 4vh; color: #452E4F;">ℹ️ Description </h2>
         <p style="color: #452E4F;"><%= @move.description %></p>
-      <h2 style="margin-top: 2vh; color: #452E4F;">⚠️ Attention: </h2>
+      <h2 style="margin-top: 4vh; color: #452E4F;">⚠️ Attention </h2>
         <p style="color: #452E4F;"><%= @move.attention %></p>
     </div>
   </section>
 </div>
 
-  <script>
-    var habillage = document.getElementById("habillage3");
-    var button = document.querySelector('.video-move');
-    var button2 = document.querySelector('#play');
-    var button3 = document.querySelector('#pause');
+<script>
+  var habillage = document.getElementById("habillage1");
+  var button = document.querySelector('.video-move');
+  var btnPlay = document.querySelector('#play');
+  var btnPause = document.querySelector('#pause');
 
-    button2.addEventListener("click", function (event) {
-      button.play()
-      habillage.classList.add("d-none")
-      button2.classList.add("d-none")
-      button3.classList.remove("d-none")
-    })
-    button3.addEventListener("click", function (event) {
-      button.pause()
-      habillage.classList.remove("d-none")
-      button3.classList.add("d-none")
-      button2.classList.remove("d-none")
-    })
-
+  btnPlay.addEventListener("click", function (event) {
+    button.play()
+    habillage.classList.add("d-none")
+    btnPlay.classList.add("d-none")
+    btnPause.classList.add("d-none")
+  })
+  button.addEventListener("click", function (event) {
+    button.pause()
+    habillage.classList.remove("d-none")
+    btnPause.classList.add("d-none")
+    btnPlay.classList.remove("d-none")
+  })
 </script>
