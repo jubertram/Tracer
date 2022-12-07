@@ -17,7 +17,13 @@
 
 <div id="habillage1">
   <section class="flex-profile">
-    <h1 style="margin: 1.5rem auto; font-weight: 700;"><%= @spot.address %></h1>
+    <h1 style="margin: 1.5rem auto; font-weight: 700;">
+      <% if @spot.name%>
+        <%= @spot.name.capitalize %>
+      <% else %>
+        <%= @spot.address.capitalize %>
+      <% end %>
+    </h1>
       <div class="choices">
         <div class="square-button">
           <% if @bookmark.first %>
@@ -100,10 +106,8 @@
     </ul>
 
   <div id="map3" data-markers=<%= @markers.to_json %> style="width:100%; height:350px"></div>
-
   </section>
 </div>
-
 <script>
 // ------------------------------------------- MAP ------------------------------------------
 
@@ -115,11 +119,10 @@ var map = new mapboxgl.Map({
 style: 'mapbox://styles/mapbox/satellite-streets-v12',
 zoom: 18
 });
-
+console.log(map3.dataset.markers);
 // j'ajoute les markers
-
 var markers3 = JSON.parse(map3.dataset.markers)
-console.log(markers3);
+console.log(markers3)
 markers3.forEach(marker => {
   const popup = new mapboxgl.Popup().setHTML(marker.info_window2)
 
