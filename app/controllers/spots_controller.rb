@@ -23,7 +23,8 @@ class SpotsController < ApplicationController
     @markers = @spot.spot_moves.map do |spot_move|
       {
         lat: spot_move.latitude,
-        lng: spot_move.longitude
+        lng: spot_move.longitude,
+        info_window2: render_to_string(partial: "info_window2", locals: { spot_move: spot_move })
       }
     end
   end
