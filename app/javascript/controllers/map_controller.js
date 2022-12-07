@@ -12,7 +12,7 @@ export default class extends Controller {
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
-      container: 'map1',
+      container: 'map',
       style: "mapbox://styles/chosuke/clb2cktqf000t14sb5l605sr1",
       center: [2.60, 46],
       zoom: 4
