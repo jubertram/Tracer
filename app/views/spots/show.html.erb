@@ -66,7 +66,7 @@
 
     <% if @spot.reviews.find_by(user_id: current_user) == nil %>
       <div class="review">
-        <h2>laisse une évaluation</h2>
+        <h3>laisse une évaluation</h3>
         <%= simple_form_for [@spot, @review] do |f| %>
           <%= f.input :rating, as: :hidden %>
           <div class="my-3" id="review-star-ratings">
@@ -120,6 +120,9 @@ zoom: 18
 var markers3 = JSON.parse(map3.dataset.markers)
 console.log(markers3);
 markers3.forEach(marker => {
+  const popup = new mapboxgl.Popup().setHTML(marker.info_window2)
+
+  // Create a HTML element for your custom marker
   const customMarker3 = document.createElement("div")
   customMarker3.className = "marker3"
   customMarker3.style.backgroundImage = `url('https://res.cloudinary.com/dxx5x9kzp/image/upload/v1669905490/Groupmarker_eai2sh.png')`
@@ -129,6 +132,7 @@ markers3.forEach(marker => {
 
   var addedMarker3 = new mapboxgl.Marker(customMarker3)
     .setLngLat([marker.lng, marker.lat])
+    .setPopup(popup)
     .addTo(map);
 
   customMarker3.markerInstance = addedMarker3
