@@ -18,10 +18,10 @@
 <div id="habillage1">
   <section class="flex-profile">
     <h1 style="margin: 1.5rem auto; font-weight: 700;">
-      <% if @spot.name%>
-        <%= @spot.name.capitalize %>
-      <% else %>
+      <% if @spot.name == ""%>
         <%= @spot.address.capitalize %>
+      <% else %>
+        <%= @spot.name.capitalize %>
       <% end %>
     </h1>
       <div class="choices">
