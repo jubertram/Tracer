@@ -14,8 +14,9 @@
   position: relative;
   top: 163px !important;
   left: 4px !important;
-  font-family: 'Abril Fatface', cursive;
-  color: #452E4F;
+  font-family: "Helvetica Neue", "Helvetica Neue", "sans-serif";
+  color: #c3c7eb;
+  filter: contrast(1.75);
   font-size: 48px;
 }
 
@@ -38,10 +39,11 @@
   padding-top: 15%;
 }
 
+
+
 .ball {
   display: inline-block;
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   margin: 0;
   border-radius: 50%;
   position: relative;
@@ -86,6 +88,19 @@
 // }
 
 .stage {
+  border-radius: 50%;
+  -o-animation-name: blackWhite;
+  -o-animation-iteration-count: infinite;
+  -o-animation-duration: 3.5s;
+  -ms-animation-name: blackWhite;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-duration: 3.5s;
+  -webkit-animation-name: blackWhite;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 3.5s;
+  animation-name: blackWhite;
+  animation-iteration-count: infinite;
+  animation-duration: 3.5s;
   width: 300px;
   height: 300px;
   display: inline-block;
@@ -141,3 +156,24 @@
 
   100% {
     background-position: 0 0; } }
+
+@-webkit-keyframes blackWhite {
+  0% {box-shadow: #efe8ffde 0 0 75px 6px; }
+  50% { box-shadow: #ffffff7e 0 0 35px 6px; }
+  100% {box-shadow: #efe8ffde 0 0 75px 6px; }
+}
+@keyframes blackWhite {
+  0% {box-shadow: #efe8ff 0 0 75px 6px; }
+  50% { box-shadow: #ffffff7e 0 0 35px 6px; }
+  100% {box-shadow: #efe8ff 0 0 75px 6px; }
+}
+@-o-keyframes blackWhite {
+  0% {box-shadow: #efe8ff 0 0 75px 6px; }
+  50% { box-shadow: #ffffff7e 0 0 35px 6px; }
+  100% {box-shadow: #efe8ff 0 0 75px 6px; }
+}
+@-ms-keyframes blackWhite {
+  0% {box-shadow: #efe8ff 0 0 75px 6px; }
+  50% { box-shadow: #ffffff7e 0 0 35px 6px; }
+  100% {box-shadow: #efe8ff 0 0 75px 6px; }
+}
