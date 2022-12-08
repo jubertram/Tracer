@@ -1,0 +1,38 @@
+.edit-background{
+  background-image: url(https://res.cloudinary.com/df1jnnjv1/image/upload/v1670426371/Tracer/parkour_yoky0v.jpg);
+  height: 100vh;
+  background-size: cover;
+  .form-actions {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
+
+.opacity{
+  opacity: 0.7;
+  backdrop-filter: blur(10px);
+}
+
+.opacity label{
+  color: $charcoal;
+  text-align: center;
+}
+
+.opacity input{
+  background: rgb(255, 255, 255);
+  border-radius: 20px;
+}
+.opacity textarea{
+  background: rgb(255, 255, 255);
+  border-radius: 20px;
+}
+
+.white-filter {
+  background-color: rgb(219, 219, 219);
+  opacity: 0.8;
+  height: 100vh;
+}
+
+.text {
+  text-align: center;
+}
