@@ -104,7 +104,13 @@
             <% end %>
               <div class="card-info">
                 <%= link_to spot_path(bookmark.spot) do %>
-                  <p style="overflow: hidden; white-space: nowrap;" class="card-address"><%= bookmark.spot.address %></p>
+                  <p style="overflow: hidden; white-space: nowrap;" class="card-address">
+                    <% if bookmark.spot.name == nil %>
+                      <%= bookmark.spot.address %>
+                    <% else %>
+                      <%= bookmark.spot.name %>
+                    <% end %>
+                  </p>
                 <% end %>
                 <div id="text-link">
                   <p style="margin:0;"><%= bookmark.spot.moves.length %> Moves</p>
