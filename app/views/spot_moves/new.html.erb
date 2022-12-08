@@ -1,14 +1,59 @@
-<h2>Ajoute les moves à ton spot!</h2>
+<style>
+  body {
+    background-image: url('https://res.cloudinary.com/ddz8gswxn/image/upload/v1670238200/fond_profile_gh9sjh.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+</style>
+
+<section id="habillage-form-new-move">
+  <div class="whole-form-move">
+    <h1 style="margin: unset; padding-bottom: 1.5vh; font-size: 27px; font-weight: 700;">Et ces fameux moves,<br> où sont-ils ? 🤔</h1>
+    <%= simple_form_for [@spot, @spot_move] do |f| %>
+
+      <%= f.input :longitude, id:"longitude2"%>
+      <%= f.input :latitude, id:"latitude2" %>
+
+      <div style="height: 12vh; overflow: hidden;">
+        <svg class="svg-position" width="20" height="20" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21.5616 7.99025C20.7766 7.99258 20.0115 8.25076 19.3711 8.72942C18.7308 9.20808 18.2466 9.88377 17.9849 10.6639H1.26833C0.931948 10.6639 0.609343 10.8047 0.371485 11.0554C0.133627 11.3061 0 11.6461 0 12.0007C0 12.3552 0.133627 12.6952 0.371485 12.9459C0.609343 13.1966 0.931948 13.3375 1.26833 13.3375H17.9849C18.2176 14.0311 18.6268 14.6439 19.1678 15.1088C19.7088 15.5737 20.3607 15.8729 21.0522 15.9734C21.7437 16.074 22.4481 15.9721 23.0883 15.679C23.7285 15.3859 24.2799 14.9128 24.6821 14.3115C25.0844 13.7101 25.3219 13.0038 25.3687 12.2698C25.4156 11.5357 25.2699 10.8022 24.9477 10.1496C24.6255 9.4969 24.1392 8.95024 23.542 8.56939C22.9448 8.18854 22.2596 7.98818 21.5616 7.99025ZM21.5616 13.3375C21.3108 13.3375 21.0655 13.2591 20.857 13.1122C20.6484 12.9653 20.4858 12.7565 20.3898 12.5122C20.2938 12.268 20.2687 11.9992 20.3177 11.7399C20.3666 11.4806 20.4874 11.2424 20.6648 11.0554C20.8421 10.8684 21.0681 10.7411 21.3142 10.6895C21.5602 10.638 21.8152 10.6644 22.047 10.7656C22.2787 10.8668 22.4768 11.0381 22.6162 11.258C22.7556 11.4778 22.8299 11.7363 22.8299 12.0007C22.8299 12.3552 22.6963 12.6952 22.4585 12.9459C22.2206 13.1966 21.898 13.3375 21.5616 13.3375Z" fill="#7077A0"/>
+          <path d="M1.26833 5.31577H2.76496C3.03157 6.08998 3.51788 6.7589 4.1578 7.23162C4.79772 7.70434 5.56021 7.95793 6.34165 7.95793C7.12309 7.95793 7.88559 7.70434 8.52551 7.23162C9.16543 6.7589 9.65173 6.08998 9.91834 5.31577H24.0983C24.4347 5.31577 24.7573 5.17493 24.9951 4.92423C25.233 4.67353 25.3666 4.33351 25.3666 3.97897C25.3666 3.62442 25.233 3.2844 24.9951 3.0337C24.7573 2.783 24.4347 2.64216 24.0983 2.64216H9.91834C9.65173 1.86795 9.16543 1.19903 8.52551 0.72631C7.88559 0.253591 7.12309 0 6.34165 0C5.56021 0 4.79772 0.253591 4.1578 0.72631C3.51788 1.19903 3.03157 1.86795 2.76496 2.64216H1.26833C0.931948 2.64216 0.609343 2.783 0.371485 3.0337C0.133627 3.2844 0 3.62442 0 3.97897C0 4.33351 0.133627 4.67353 0.371485 4.92423C0.609343 5.17493 0.931948 5.31577 1.26833 5.31577ZM6.34165 2.64216C6.5925 2.64216 6.83772 2.72056 7.0463 2.86745C7.25487 3.01434 7.41744 3.22312 7.51344 3.46739C7.60943 3.71166 7.63455 3.98045 7.58561 4.23976C7.53667 4.49908 7.41588 4.73727 7.2385 4.92423C7.06112 5.11118 6.83512 5.2385 6.58909 5.29008C6.34306 5.34166 6.08804 5.31519 5.85628 5.21401C5.62453 5.11283 5.42644 4.94149 5.28707 4.72165C5.14771 4.50182 5.07332 4.24336 5.07332 3.97897C5.07332 3.62442 5.20695 3.2844 5.44481 3.0337C5.68267 2.783 6.00527 2.64216 6.34165 2.64216Z" fill="#7077A0"/>
+          <path d="M24.0983 18.6842H14.9917C14.7251 17.9099 14.2387 17.241 13.5988 16.7683C12.9589 16.2956 12.1964 16.042 11.415 16.042C10.6335 16.042 9.87104 16.2956 9.23112 16.7683C8.5912 17.241 8.10489 17.9099 7.83828 18.6842H1.26833C0.931948 18.6842 0.609343 18.825 0.371485 19.0757C0.133627 19.3264 0 19.6664 0 20.021C0 20.3755 0.133627 20.7155 0.371485 20.9662C0.609343 21.2169 0.931948 21.3578 1.26833 21.3578H7.83828C8.10489 22.132 8.5912 22.8009 9.23112 23.2736C9.87104 23.7463 10.6335 23.9999 11.415 23.9999C12.1964 23.9999 12.9589 23.7463 13.5988 23.2736C14.2387 22.8009 14.7251 22.132 14.9917 21.3578H24.0983C24.4347 21.3578 24.7573 21.2169 24.9951 20.9662C25.233 20.7155 25.3666 20.3755 25.3666 20.021C25.3666 19.6664 25.233 19.3264 24.9951 19.0757C24.7573 18.825 24.4347 18.6842 24.0983 18.6842ZM11.415 21.3578C11.1641 21.3578 10.9189 21.2794 10.7103 21.1325C10.5018 20.9856 10.3392 20.7768 10.2432 20.5325C10.1472 20.2883 10.1221 20.0195 10.171 19.7602C10.22 19.5008 10.3407 19.2626 10.5181 19.0757C10.6955 18.8887 10.9215 18.7614 11.1675 18.7098C11.4136 18.6583 11.6686 18.6847 11.9003 18.7859C12.1321 18.8871 12.3302 19.0584 12.4696 19.2783C12.6089 19.4981 12.6833 19.7566 12.6833 20.021C12.6833 20.3755 12.5497 20.7155 12.3118 20.9662C12.074 21.2169 11.7514 21.3578 11.415 21.3578Z" fill="#7077A0"/>
+        </svg>
+
+        <svg class="svg-position-dropdown"width="14" height="10" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5.21318 5.27227C5.06715 5.27255 4.92563 5.22169 4.81318 5.12852L1.06319 2.00352C0.93555 1.89743 0.855284 1.74499 0.840047 1.57972C0.82481 1.41445 0.875848 1.2499 0.981935 1.12227C1.08802 0.994631 1.24047 0.914366 1.40573 0.899129C1.571 0.883892 1.73555 0.93493 1.86318 1.04102L5.21318 3.84102L8.56319 1.14102C8.62712 1.0891 8.70068 1.05033 8.77964 1.02694C8.8586 1.00354 8.94141 0.995983 9.0233 1.00469C9.10519 1.01341 9.18456 1.03822 9.25683 1.0777C9.3291 1.11718 9.39286 1.17056 9.44444 1.23477C9.50167 1.29903 9.54502 1.37442 9.57177 1.45622C9.59851 1.53801 9.60808 1.62445 9.59986 1.71012C9.59165 1.79578 9.56583 1.87883 9.52403 1.95405C9.48223 2.02927 9.42534 2.09505 9.35693 2.14727L5.60694 5.16602C5.49126 5.24446 5.35262 5.28187 5.21318 5.27227V5.27227Z" fill="#7077A0"/>
+        </svg>
+
+        <%= f.association :move, as: :select, label: "Place les !", label_html: { class: 'form-inputs'} %>
+      </div>
+
+      <div id="map1" data-markers=<%= @markers.to_json %> data data-longitude=<%= @spot.longitude %> data-latitude=<%= @spot.latitude %> style="width: 100%; height: 35vh; border-radius: 30px; margin: 6vh 0; filter: drop-shadow(0px 8px 20px rgba(10, 27, 70, 0.2));">
+      </div>
 
 
-<%= simple_form_for [@spot, @spot_move] do |f| %>
-  <%= f.association :move, as: :select, label: "Nom du move", label_html: { class: 'form-inputs'} %>
-  <%= f.input :longitude, id:"longitude2"%>
-  <%= f.input :latitude, id:"latitude2" %>
-<div id="map1" data-markers=<%= @markers.to_json %> data data-longitude=<%= @spot.longitude %> data-latitude=<%= @spot.latitude %> style="width:100%; height:400px"></div>
-  <%= f.submit "Enregistre le move", class: "btn btn-primary" %>
-  <%= link_to "Fin d'ajout!" , spot_path(@spot)%>
-  <% end %>
+      <div style="display: flex; justify-content: space-between;">
+        <div style="display: flex; justify-content: end;">
+          <div class="new-move-bouton" style="width: 19vh;">
+            <%= f.submit "Enregistre le move", class: "submit-fixeur" %>
+          </div>
+        </div>
+
+        <% if @spot.spot_moves != [] %>
+          <div style="display: flex; justify-content: end;">
+            <div class="new-move-bouton">
+              <%= link_to "Fin d'ajout!" , spot_path(@spot), class: "submit-fixeur" %>
+              <svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23 9H1M23 9L15 1M23 9L15 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    <% end %>
+  <div>
+</section>
 
 
 
@@ -19,7 +64,7 @@ var map = new mapboxgl.Map({
   container: 'map1',
 style: 'mapbox://styles/mapbox/satellite-streets-v12',
 center: [map1.dataset.longitude, map1.dataset.latitude],
-zoom: 18
+zoom: 17
 });
 
 // Select all checkboxes with the name 'settings' using querySelectorAll.
@@ -39,7 +84,7 @@ var enabledSettings = []
     customMarker.style.backgroundImage = `url('https://res.cloudinary.com/dxx5x9kzp/image/upload/v1669905490/Groupmarker_eai2sh.png')`
     customMarker.style.backgroundSize = "contain"
     customMarker.style.width = "34px"
-    customMarker.style.height = "45px"
+    customMarker.style.height = "42px"
 
     let marker = new mapboxgl.Marker({
         element: customMarker,
@@ -66,7 +111,7 @@ var enabledSettings = []
       customMarker2.style.backgroundImage = `url('https://res.cloudinary.com/dxx5x9kzp/image/upload/v1669905490/Groupmarker_eai2sh.png')`
       customMarker2.style.backgroundSize = "contain"
       customMarker2.style.width = "34px"
-      customMarker2.style.height = "45px"
+      customMarker2.style.height = "42px"
 
       var addedMarker = new mapboxgl.Marker(customMarker2)
         .setLngLat([marker.lng, marker.lat])
