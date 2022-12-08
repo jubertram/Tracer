@@ -82,3 +82,5 @@ gem "geocoder"
 
 #cloudinary
 gem "cloudinary"
+
+gem "bridgetown-svg-inliner", "~> 1.0", :group => :bridgetown_plugins
