@@ -33,7 +33,7 @@
       <div class="choices">
         <div class="square-button">
           <% if @bookmark.first %>
-            <%= link_to '<i class="fa-solid fa-bookmark" style="color: #5B5071"></i>'.html_safe, spot_bookmark_path(@spot.id), data: {turbo_method: :delete} %>
+            <%= link_to '<i class="fa-solid fa-bookmark" style="color: #5B5071"></i>'.html_safe, spot_bookmark_path(@spot.id), data: {turbo_method: :delete, from: "spot"} %>
           <% else @bookmark == nil %>
             <%= link_to '<i class="fa-regular fa-bookmark" style="color: #5B5071"></i>'.html_safe, spot_bookmarks_path(@spot.id), data: {turbo_method: :post} %>
           <% end %>
