@@ -12,6 +12,6 @@ Rails.application.routes.draw do
     resources :spot_moves, only: %i[new create]
   end
 
-  resources :pages, only: %i[ edit update ]
+  resources :pages, only: %i[edit update]
   resources :moves, only: :show
 end

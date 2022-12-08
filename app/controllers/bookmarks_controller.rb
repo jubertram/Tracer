@@ -4,7 +4,11 @@ class BookmarksController < ApplicationController
     spot = Spot.find(params[:spot_id])
     @bookmark = Bookmark.where(user_id: current_user.id, spot_id: spot.id)
     @bookmark.destroy_all
-    redirect_to spot_path(spot), status: :see_other
+    if params[:from] == "profile"
+      redirect_to profile_path, status: :see_other
+    else
+      redirect_to spot_path(spot.id)
+    end
   end
 
   def create
