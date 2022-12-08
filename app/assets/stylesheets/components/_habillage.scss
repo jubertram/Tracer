@@ -70,9 +70,26 @@
   backdrop-filter: blur(5px);
   /* Note: backdrop-filter has minimal browser support */
   color: rgba(79, 58, 87, 1);
-
 }
 
+
+#habillage-form-new-move {
+  display: grid;
+  align-content: space-around;
+  justify-content: space-around;
+  justify-items: center;
+  box-sizing: border-box;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(5px);
+  /* Note: backdrop-filter has minimal browser support */
+  color: rgba(79, 58, 87, 1);
+
+}
 /* avatar */
 
 .avatar-profile {
