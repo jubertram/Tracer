@@ -87,7 +87,8 @@
                   flex-wrap: wrap;
                   justify-content: space-between;
                   margin-bottom: 3vh;
-                  margin-top: 1vh;">
+                  margin-top: 1vh;
+                  width: 100%;">
         <% @spot.moves.each do |move| %>
           <li class="move-bouton">
             <p style="width: 12ch; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><%= link_to move.name, move_path(move) %></p>
