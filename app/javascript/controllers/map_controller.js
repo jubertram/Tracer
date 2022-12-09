@@ -56,7 +56,7 @@ export default class extends Controller {
       customMarker.style.backgroundImage = `url('https://res.cloudinary.com/dxx5x9kzp/image/upload/v1669905490/Groupmarker_eai2sh.png')`
       customMarker.style.backgroundSize = "contain"
       customMarker.style.width = "34px"
-      customMarker.style.height = "45px"
+      customMarker.style.height = "42px"
 
       // Pass the element as an argument to the new marker
       const addedMarker = new mapboxgl.Marker(customMarker)
