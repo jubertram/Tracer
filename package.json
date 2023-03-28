@@ -9,6 +9,7 @@
     "animate.css": "^4.1.1",
     "bootstrap": "^5.2.3",
     "gsap": "^3.11.3",
+    "node-sass": "^8.0.0",
     "rails_admin": "3.1.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.0"
