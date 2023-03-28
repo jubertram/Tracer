@@ -11,7 +11,7 @@
 /* Retour arrière */
 .round-button {
 z-index: 1;
-position: fixed;
+position: absolute;
 display: grid;
 justify-content: center;
 width: 40px;
@@ -24,6 +24,10 @@ background: rgba(255, 255, 255, 0.53);
 border: 1px solid #FFFFFF;
 border-radius: 35px;
 }
+
+// responsive behavior
+
+
 
 
 .square-button {
@@ -58,6 +62,7 @@ border-radius: 35px;
 
 /* Rectangle 1 */
 .move-bouton {
+  padding: 0 10px;
   width: 16vh;
   height: 42px;
   background: rgb(112,119,160);
