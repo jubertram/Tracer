@@ -6,6 +6,7 @@ class Spot < ApplicationRecord
   has_many :moves, through: :spot_moves
 
   validates :spot_difficulty, presence: true
+  validates :photo_url, presence: true
   has_one_attached :photo_url
 
   geocoded_by :address

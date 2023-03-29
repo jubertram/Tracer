@@ -39,6 +39,7 @@ class SpotsController < ApplicationController
     if @spot.save
       redirect_to new_spot_spot_move_path(@spot), notice: "Le spot a été créé avec succès!"
     else
+      flash.now[:alert] = "Veuillez ajouter une photo!"
       render :new, status: :unprocessable_entity
     end
   end

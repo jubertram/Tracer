@@ -1,6 +1,6 @@
 <%= link_to profile_path do %>
   <% if current_user.photo.attached? %>
-    <div class="avatar-profile-move">
+    <div class="avatar-profile-move2">
       <%= cl_image_tag current_user.photo.key %>
     </div>
   <% end %>
@@ -11,7 +11,7 @@
 <% end %>
 
 <%= link_to spots_path do %>
-  <div class="round-button">
+  <div class="round-button2">
     <div class="circle-back">
     </div>
     <svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -113,7 +113,7 @@
                 <i id="<%= index %>" class="review-rating fa-regular fa-star"></i>
               <% end %>
             </div>
-            <%= f.submit class: "btn btn-primary", value: "Valider", id:"submit-star" %>
+            <%= f.submit class: "btn", value: "Valider", id:"submit-star" %>
           <% end %>
         </div>
       </div>
