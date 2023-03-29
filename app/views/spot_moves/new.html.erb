@@ -30,6 +30,8 @@
         <%= f.association :move, as: :select, label: "Place les !", label_html: { class: 'form-inputs'} %>
       </div>
 
+      <p>Pense à valider la position de ton move<br/> avant d'en ajouter un autre 👌</p>
+
       <div id="map1" data-markers=<%= @markers.to_json %> data data-longitude=<%= @spot.longitude %> data-latitude=<%= @spot.latitude %> style="width: 100%; height: 35vh; border-radius: 30px; margin: 6vh 0; filter: drop-shadow(0px 8px 20px rgba(10, 27, 70, 0.2));">
       </div>
 
@@ -37,7 +39,7 @@
       <div style="display: flex; justify-content: space-between;">
         <div style="display: flex; justify-content: end;">
           <div class="new-move-bouton" style="width: 19vh;">
-            <%= f.submit "Enregistre le move", class: "submit-fixeur" %>
+            <%= f.submit "Valide la position", class: "submit-fixeur" %>
           </div>
         </div>
 

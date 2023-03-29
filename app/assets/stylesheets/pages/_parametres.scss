@@ -1,0 +1,57 @@
+.parametres {
+  color: $charcoal;
+  height: 100vh;
+  .round-button{
+    width: 30px;
+    height: 30px;
+    left: 19px;
+    top: 11px;
+    background: linear-gradient(280deg, #7077a0 0%, #4f3a57 100%);
+
+    path{
+      stroke: #ffffffdb;
+    }
+  }
+  h2{
+    padding-top: 10px;
+  }
+  form{
+    padding: 0 20px;
+  }
+}
+
+.unhappy{
+  padding-left: 10px;
+
+  button{
+    text-decoration: none;
+    color: $gray;
+  }
+}
+
+
+  @media screen and (min-width: 992px) {
+    .white-filter {
+      width: 60%;
+      margin-left: 20%;
+    }
+    .parametres .round-button{
+      margin-left: 20%;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .white-filter {
+      width: 40%;
+      margin-left: 30%;
+    }
+    .parametres .round-button{
+      margin-left: 30%;
+    }
+  }
+
+  @media screen and (min-height: 695px) {
+    .parametres {
+      height: 100vh;
+    }
+  }

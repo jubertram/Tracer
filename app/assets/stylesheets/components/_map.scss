@@ -48,6 +48,8 @@
   }
   img {
     border-radius: 10px !important;
+    height: 150px;
+    width: 215px;
   }
 }
 
@@ -151,6 +153,16 @@
         color: #4F3A57!important;
       }
     }
+  }
+}
+
+
+@media screen and (min-width: 992px) {
+  .mapboxgl-control-container .mapboxgl-ctrl-top-right{
+    width: 520px !important;
+  }
+  .avatar-profile-search img {
+    left: 493px;
   }
 }
 
