@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 
 // Define fonts for body and headers
-$body-font: "Helvetica Neue", "Helvetica Neue", "sans-serif";
-$headers-font: "Helvetica Neue", "Helvetica Neue", "sans-serif";
+$body-font: "Nunito", "sans-serif";
+$headers-font: "Nunito", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
@@ -18,7 +18,7 @@ $headers-font: "Helvetica Neue", "Helvetica Neue", "sans-serif";
 
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin: auto;
-  font-family: "Helvetica Neue", "Helvetica Neue", "sans-serif";
+  font-family: "Nunito", "sans-serif";
   font-weight: 500;
   /* line-height: 1.2; */
 }

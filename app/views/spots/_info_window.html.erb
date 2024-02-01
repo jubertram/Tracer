@@ -1,7 +1,11 @@
-<% if spot.photo_url.attached? %>
-  <%= cl_image_tag spot.photo_url.key, width: "100%", height: "auto" %>
+<%= link_to  spot_path(spot) do %>
+  <% if spot.photo_url.attached? %>
+    <%= cl_image_tag spot.photo_url.key, width: "100%", height: "auto" %>
+  <% else %>
+    <img src="https://images.pexels.com/photos/6009295/pexels-photo-6009295.jpeg">
+  <% end %>
+  <h2 class="popup-title"><%= spot.address.capitalize %></h2>
+  <ul class="list-unstyled">
+  <p>(<%= spot.moves.length %> moves)</p>
+  </ul>
 <% end %>
-<h2 class="popup-title"><%= link_to spot.address, spot_path(spot) %></h2>
-<ul class="list-unstyled">
-<p>(<%= spot.moves.length %> moves)</p>
-</ul>
