@@ -6,6 +6,16 @@
   <% end %>
 <% end %>
 
+<%= link_to new_user_session_path do %>
+  <% if !current_user %>
+    <div class="avatar-profile-move2">
+      <%= image_tag "https://res.cloudinary.com/dxx5x9kzp/image/upload/v1670426913/avatar_ts0tsa.png" %>
+    </div>
+  <% end %>
+<% end %>
+
+
+
 <% if @spot.photo_url.attached? %>
   <div class ="fond" style="background-image: url('<%= cl_image_path @spot.photo_url.key %>');"></div>
 <% end %>
@@ -31,14 +41,16 @@
       <% end %>
     </h1>
       <div class="choices">
-        <div class="square-button">
-          <% if @bookmark && @bookmark.first %>
+        <% if @bookmark && @bookmark.first %>
+          <div class="square-button">
             <%= link_to '<i class="fa-solid fa-bookmark" style="color: #5B5071"></i>'.html_safe, spot_bookmark_path(@spot.id), data: {turbo_method: :delete, from: "spot"} %>
-          <% elsif @user && @bookmark == nil %>
+          </div>
+        <% elsif @bookmark && current_user %>
+          <div class="square-button">
             <%= link_to '<i class="fa-regular fa-bookmark" style="color: #5B5071"></i>'.html_safe, spot_bookmarks_path(@spot.id), data: {turbo_method: :post} %>
-          <% else %>
-          <% end %>
-        </div>
+          </div>
+        <% else %>
+        <% end %>
 
         <%= link_to spots_path do %>
           <div class="square-button">
