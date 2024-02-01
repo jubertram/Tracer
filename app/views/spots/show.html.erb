@@ -1,5 +1,5 @@
 <%= link_to profile_path do %>
-  <% if current_user.photo.attached? %>
+  <% if current_user && current_user.photo.attached? %>
     <div class="avatar-profile-move2">
       <%= cl_image_tag current_user.photo.key %>
     </div>
@@ -32,10 +32,11 @@
     </h1>
       <div class="choices">
         <div class="square-button">
-          <% if @bookmark.first %>
+          <% if @bookmark && @bookmark.first %>
             <%= link_to '<i class="fa-solid fa-bookmark" style="color: #5B5071"></i>'.html_safe, spot_bookmark_path(@spot.id), data: {turbo_method: :delete, from: "spot"} %>
-          <% else @bookmark == nil %>
+          <% elsif @user && @bookmark == nil %>
             <%= link_to '<i class="fa-regular fa-bookmark" style="color: #5B5071"></i>'.html_safe, spot_bookmarks_path(@spot.id), data: {turbo_method: :post} %>
+          <% else %>
           <% end %>
         </div>
 

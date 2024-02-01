@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
 
   <%= link_to profile_path do %>
-    <% if @user.photo.attached? %>
+    <% if @user && @user.photo.attached? %>
       <div class="avatar-profile-search">
         <%= cl_image_tag @user.photo.key,  width: 40, height: 40%>
       </div>

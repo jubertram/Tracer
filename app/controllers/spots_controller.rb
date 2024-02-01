@@ -16,7 +16,7 @@ class SpotsController < ApplicationController
 
   def show
     @review = Review.new
-    @bookmark = Bookmark.where(user_id: current_user.id, spot_id: @spot.id)
+    @bookmark = Bookmark.where(user_id: current_user.id, spot_id: @spot.id) if current_user
     @reviews = @spot.reviews
     @average_rating = @reviews.average(:rating).to_i
 

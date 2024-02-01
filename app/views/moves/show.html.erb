@@ -9,7 +9,7 @@
 <% end %>
 
 <%= link_to profile_path do %>
-  <% if @user.photo.attached? %>
+  <% if @user && @user.photo.attached? %>
     <div class="avatar-profile-move">
       <%= cl_image_tag @user.photo.key %>
     </div>
